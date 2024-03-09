@@ -7,7 +7,7 @@ public class Player : KinematicBody2D
     private float elapsed = 0f;
     private Vector2 velocity = new Vector2();
     private float timeToNextBlink = 0f;
-    
+
     // Store the initial sprite translation so that we can add an offset to it
     private Vector2 initialSpriteTranslation;
 
@@ -19,14 +19,19 @@ public class Player : KinematicBody2D
 
     [Export]
     private float MoveSpeed = 150f;
-    
+
     [Export]
     private float BlinkMin = 2.5f;
-    
+
     [Export]
     private float BlinkMax = 8f;
 
-    
+    [Export]
+    private float Opacity = 0.9f;
+    [Export]
+    private float OpacityAnimAmplitude = 0.1f;
+    [Export]
+    private float OpacityAnimFrequency = 1f;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -44,6 +49,9 @@ public class Player : KinematicBody2D
         sprite.Position =
             initialSpriteTranslation
             + Vector2.Up * Mathf.Sin(elapsed * FloatAnimFrequency) * FloatAnimAmplitude;
+
+        var newOpacity = Opacity + Mathf.Sin(elapsed * OpacityAnimFrequency) * OpacityAnimAmplitude;
+        sprite.Modulate = new Color(1, 1, 1, newOpacity);
 
         // Flip sprite towards movement direction
         if (velocity.x != 0)
