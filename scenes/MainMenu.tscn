@@ -50,14 +50,12 @@ margin_top = 71.0
 margin_bottom = 121.0
 focus_neighbour_top = NodePath("../QuitButton")
 focus_neighbour_bottom = NodePath("../OptionsButton")
-focus_mode = 1
 text = "Start Game"
 arrow_margin_from_center = 152
 
 [node name="OptionsButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
 focus_neighbour_top = NodePath("../StartButton")
 focus_neighbour_bottom = NodePath("../QuitButton")
-focus_mode = 1
 text = "Options"
 arrow_margin_from_center = 120
 
@@ -66,7 +64,6 @@ margin_top = 179.0
 margin_bottom = 229.0
 focus_neighbour_top = NodePath("../OptionsButton")
 focus_neighbour_bottom = NodePath("../StartButton")
-focus_mode = 1
 text = "Quit"
 arrow_margin_from_center = 83
 
