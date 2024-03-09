@@ -8,12 +8,13 @@ func _ready():
 	setup_text()
 	hide_arrows()
 	set_focus_mode(true)
+	connect("pressed", self, "on_pressed");
 
 func _process(delta):
 	if Engine.editor_hint:
 		setup_text()
 		show_arrows()
-	
+
 func setup_text():
 	$RichTextLabel.bbcode_text = "[center] %s [/center]" % [text]
 	
@@ -30,8 +31,12 @@ func hide_arrows():
 	for arrow in [$LeftArrow, $RightArrow]:
 		arrow.visible = false
 
+func on_pressed():
+	get_node("%SelectSound").play()
+
 func _on_TextureButton_focus_entered():
 	show_arrows()
+	get_node("%HoverSound").play()
 
 func _on_TextureButton_focus_exited():
 	hide_arrows()
