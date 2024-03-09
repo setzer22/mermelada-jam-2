@@ -85,6 +85,10 @@ ui_down={
 
 project/assembly_name="MermeladaJam2"
 
+[network]
+
+limits/debugger_stdout/max_chars_per_second=32768
+
 [physics]
 
 common/enable_pause_aware_picking=true

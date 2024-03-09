@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/Background.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/ItemProps/Painting.tscn" type="PackedScene" id=2]
@@ -6,24 +6,36 @@
 [ext_resource path="res://scenes/ItemProps/Couch.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/ItemProps/Table.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/ItemProps/Pillow.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/Player/Player.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/GameCamera.cs" type="Script" id=8]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Background" parent="." instance=ExtResource( 1 )]
-position = Vector2( 687, 298 )
-scale = Vector2( 4.688, 1 )
+scale = Vector2( 9.486, 1 )
 
-[node name="Painting" parent="." instance=ExtResource( 2 )]
-position = Vector2( 818, 168 )
+[node name="SmartYSorter" type="YSort" parent="."]
 
-[node name="Couch" parent="." instance=ExtResource( 4 )]
-position = Vector2( 778, 389 )
+[node name="Couch" parent="SmartYSorter" instance=ExtResource( 4 )]
+position = Vector2( -184, 194 )
 
-[node name="Lamp" parent="." instance=ExtResource( 3 )]
-position = Vector2( 1033, 318 )
+[node name="Pillow" parent="SmartYSorter/Couch" instance=ExtResource( 6 )]
+position = Vector2( 91, -77 )
 
-[node name="Pillow" parent="." instance=ExtResource( 6 )]
-position = Vector2( 868, 383 )
+[node name="Painting" parent="SmartYSorter" instance=ExtResource( 2 )]
+position = Vector2( -131, -79 )
 
-[node name="ItemProp" parent="." instance=ExtResource( 5 )]
-position = Vector2( 1285, 481 )
+[node name="Lamp" parent="SmartYSorter" instance=ExtResource( 3 )]
+position = Vector2( 92, 148 )
+
+[node name="ItemProp" parent="SmartYSorter" instance=ExtResource( 5 )]
+position = Vector2( 336, 188 )
+
+[node name="Player" parent="SmartYSorter" groups=["Player"] instance=ExtResource( 7 )]
+position = Vector2( -481, 170 )
+
+[node name="Camera2D" type="Camera2D" parent="." groups=["GameCamera"]]
+position = Vector2( -496, 0 )
+current = true
+script = ExtResource( 8 )
+ViewportScrollThreshold = 0.5

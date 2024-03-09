@@ -25,3 +25,5 @@ texture = ExtResource( 2 )
 material = SubResource( 2 )
 scale = Vector2( 3.717, 3.717 )
 texture = ExtResource( 1 )
+
+[node name="Collisions" type="StaticBody2D" parent="."]

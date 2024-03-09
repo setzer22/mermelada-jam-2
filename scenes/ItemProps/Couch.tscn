@@ -17,8 +17,14 @@ shader_param/add_margins = true
 [node name="Couch" instance=ExtResource( 1 )]
 
 [node name="Shade" parent="." index="0"]
+position = Vector2( 0, -85 )
 texture = ExtResource( 3 )
 
 [node name="Base" parent="." index="1"]
 material = SubResource( 1 )
+position = Vector2( 1, -93 )
 texture = ExtResource( 2 )
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions" index="0"]
+position = Vector2( 2, -94 )
+polygon = PoolVector2Array( -121, 41, 204, 41, 205, 92, 174, 108, -197, 110 )
