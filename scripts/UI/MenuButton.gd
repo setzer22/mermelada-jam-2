@@ -1,6 +1,8 @@
 tool
 extends TextureButton
 
+signal onClick
+
 export(String) var text = "Text button"
 export(int) var arrow_margin_from_center = 100
 
@@ -9,6 +11,8 @@ func _ready():
 	hide_arrows()
 	set_focus_mode(true)
 	connect("pressed", self, "on_pressed");
+	connect("button_down", self, "_on_button_down");
+	connect("button_up", self, "_on_button_up");
 
 func _process(delta):
 	if Engine.editor_hint:
@@ -31,8 +35,16 @@ func hide_arrows():
 	for arrow in [$LeftArrow, $RightArrow]:
 		arrow.visible = false
 
+func _on_button_down():
+	$RichTextLabel.add_color_override("default_color",Color.gray)
+	
+func _on_button_up():
+	$RichTextLabel.add_color_override("default_color",Color.white)
+	
 func on_pressed():
 	get_node("%SelectSound").play()
+	yield (get_node("%SelectSound"), "finished")
+	emit_signal("onClick")
 
 func _on_TextureButton_focus_entered():
 	show_arrows()

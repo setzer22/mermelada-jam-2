@@ -46,6 +46,7 @@ rect_min_size = Vector2( 0, 300 )
 alignment = 1
 
 [node name="StartButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
+unique_name_in_owner = true
 margin_top = 71.0
 margin_bottom = 121.0
 focus_neighbour_top = NodePath("../QuitButton")
@@ -54,12 +55,14 @@ text = "Start Game"
 arrow_margin_from_center = 152
 
 [node name="OptionsButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
+unique_name_in_owner = true
 focus_neighbour_top = NodePath("../StartButton")
 focus_neighbour_bottom = NodePath("../QuitButton")
 text = "Options"
 arrow_margin_from_center = 120
 
 [node name="QuitButton" parent="VBoxContainer/VBoxContainer" instance=ExtResource( 2 )]
+unique_name_in_owner = true
 margin_top = 179.0
 margin_bottom = 229.0
 focus_neighbour_top = NodePath("../OptionsButton")
@@ -80,6 +83,3 @@ volume_db = -19.227
 unique_name_in_owner = true
 stream = ExtResource( 7 )
 volume_db = -29.713
-
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/StartButton" to="." method="_on_StartButton_pressed"]
-[connection signal="pressed" from="VBoxContainer/VBoxContainer/QuitButton" to="." method="_on_QuitButton_pressed"]

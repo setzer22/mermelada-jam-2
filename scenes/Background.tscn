@@ -1,0 +1,17 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://assets/background_living_room.png" type="Texture" id=1]
+[ext_resource path="res://scripts/Background.cs" type="Script" id=2]
+[ext_resource path="res://shaders/UVScale.gdshader" type="Shader" id=3]
+
+[sub_resource type="ShaderMaterial" id=2]
+shader = ExtResource( 3 )
+shader_param/uv_scale = Vector2( 1, 1 )
+
+[node name="Background" type="Node2D"]
+script = ExtResource( 2 )
+
+[node name="Background" type="Sprite" parent="."]
+material = SubResource( 2 )
+scale = Vector2( 3.717, 3.717 )
+texture = ExtResource( 1 )
