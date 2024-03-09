@@ -9,6 +9,11 @@ func _on_Area2D_body_entered(body:Node):
 	if body.get_name() == "Player":
 		playerOverEnemy=true
 
+func _on_Area2D_body_exited(body:Node):
+	if body.get_name() == "Player":
+		playerOverEnemy=false
+
+
 func _input(event):
 	if playerOverEnemy && event is InputEventKey and event.scancode == KEY_ENTER and event.pressed:
 		if get_node("FearBox").visible:
