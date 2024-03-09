@@ -6,9 +6,10 @@
 [ext_resource path="res://shaders/ItemProp.gdshader" type="Shader" id=4]
 
 [sub_resource type="ShaderMaterial" id=2]
+resource_local_to_scene = true
 shader = ExtResource( 4 )
 shader_param/color = Color( 1, 1, 1, 1 )
-shader_param/width = 1.2
+shader_param/width = 0.0
 shader_param/pattern = 2
 shader_param/inside = false
 shader_param/add_margins = true
@@ -16,11 +17,11 @@ shader_param/add_margins = true
 [node name="ItemProp" type="Node2D"]
 script = ExtResource( 3 )
 
+[node name="Shade" type="Sprite" parent="."]
+scale = Vector2( 3.717, 3.717 )
+texture = ExtResource( 2 )
+
 [node name="Base" type="Sprite" parent="."]
 material = SubResource( 2 )
 scale = Vector2( 3.717, 3.717 )
 texture = ExtResource( 1 )
-
-[node name="Shade" type="Sprite" parent="."]
-scale = Vector2( 3.717, 3.717 )
-texture = ExtResource( 2 )
