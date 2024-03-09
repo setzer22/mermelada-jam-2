@@ -1,6 +1,8 @@
 tool
 extends TextureButton
 
+signal onClick
+
 export(String) var text = "Text button"
 export(int) var arrow_margin_from_center = 100
 
@@ -33,6 +35,8 @@ func hide_arrows():
 
 func on_pressed():
 	get_node("%SelectSound").play()
+	yield (get_node("%SelectSound"), "finished")
+	emit_signal("onClick")
 
 func _on_TextureButton_focus_entered():
 	show_arrows()
