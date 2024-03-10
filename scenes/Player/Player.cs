@@ -169,35 +169,7 @@ public class Player : KinematicBody2D, IGrabber
                 .First();
             selected.highlighted = true;
 
-            if (selected.GrabbableComponent() is Grabbable g)
-            {
-                if (Input.IsActionJustPressed("Interact"))
-                {
-                    g.Grab(this, HeldObjectPos.Position);
-                }
-            }
-            else if (selected.SurfaceComponent() is Surface s)
-            {
-                if (Input.IsActionJustPressed("Interact"))
-                {
-                    if (this.grabbedObject != null)
-                    {
-                        if (!s.HasItem())
-                        {
-                            this.grabbedObject.Drop(s);
-                            this.grabbedObject = null;
-                        }
-                        else
-                        {
-                            this.Say("No puedo poner más objetos aquí...");
-                        }
-                    }
-                    else
-                    {
-                        this.Say("No tengo nada que poner aquí...");
-                    }
-                }
-            }
+            HandleInteraction(selected);
         }
 
         // Grabbed item
@@ -223,6 +195,60 @@ public class Player : KinematicBody2D, IGrabber
         if (Input.IsActionJustPressed("Debug"))
         {
             this.Say("Esto aquí no va...");
+        }
+    }
+
+    public void HandleInteraction(ItemProp selected)
+    {
+        // The interaction system uses composition. This means a single item
+        // prop can have multiple interaction modes.
+        var handled = false;
+        var errorSentence = "";
+
+        if (Input.IsActionJustPressed("Interact"))
+        {
+            if (!handled && selected.GrabbableComponent() is Grabbable g)
+            {
+                g.Grab(this, HeldObjectPos.Position);
+                handled = true;
+            }
+
+            if (!handled && selected.SurfaceComponent() is Surface s)
+            {
+                if (this.grabbedObject != null)
+                {
+                    if (!s.HasItem())
+                    {
+                        this.grabbedObject.Drop(s);
+                        this.grabbedObject = null;
+                        handled = true;
+                    }
+                    else
+                    {
+                        errorSentence = "No puedo poner más objetos aquí...";
+                    }
+                }
+                else
+                {
+                    errorSentence = "No tengo nada que poner aquí...";
+                }
+            }
+
+            if (!handled && selected.SwitchableComponent() is Switchable sw)
+            {
+                sw.Switch();
+                handled = true;
+            }
+
+            // If action could not be handled, we give the most reasonable error sentence
+            if (!handled && errorSentence != "")
+            {
+                this.Say(errorSentence);
+            }
+            else if (!handled)
+            {
+                this.Say("Esto no va a hacer nada...");
+            }
         }
     }
 

@@ -1,4 +1,5 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 [Tool]
@@ -40,11 +41,16 @@ public class ItemProp : Node2D
 
     public Grabbable GrabbableComponent()
     {
-        return GetInteractionComponent<Grabbable>("Grabbable");
+        return GetInteractionComponent<Grabbable>(nameof(Grabbable));
     }
 
     public Surface SurfaceComponent()
     {
-        return GetInteractionComponent<Surface>("Surface");
+        return GetInteractionComponent<Surface>(nameof(Surface));
+    }
+
+    public Switchable SwitchableComponent()
+    {
+        return GetInteractionComponent<Switchable>(nameof(Switchable));
     }
 }
