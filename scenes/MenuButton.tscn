@@ -27,12 +27,14 @@ bbcode_text = "[center] Text button [/center]"
 text = " Text button "
 
 [node name="LeftArrow" type="Sprite" parent="."]
+visible = false
 position = Vector2( 412, 16.6667 )
 scale = Vector2( 2.9, 2.85 )
 texture = ExtResource( 2 )
 hframes = 2
 
 [node name="RightArrow" type="Sprite" parent="."]
+visible = false
 position = Vector2( 612, 16.6667 )
 scale = Vector2( 2.9, 2.85 )
 texture = ExtResource( 2 )
