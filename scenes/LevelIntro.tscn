@@ -1,0 +1,47 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://resources/FontBigRed.tres" type="DynamicFont" id=1]
+[ext_resource path="res://resources/FontTitle.tres" type="DynamicFont" id=2]
+[ext_resource path="res://resources/FontSubtitle.tres" type="DynamicFont" id=3]
+[ext_resource path="res://scenes/LevelIntro.cs" type="Script" id=4]
+
+[node name="LevelIntro" type="Control"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+script = ExtResource( 4 )
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
+
+[node name="Title" type="Label" parent="."]
+anchor_right = 1.0
+margin_top = 69.0
+margin_bottom = 112.0
+custom_fonts/font = ExtResource( 2 )
+text = "<TITLE>"
+align = 1
+
+[node name="Subtitle" type="Label" parent="."]
+anchor_right = 1.0
+margin_top = 141.0
+margin_bottom = 184.0
+custom_fonts/font = ExtResource( 3 )
+text = "<Subtitle>"
+align = 1
+valign = 1
+
+[node name="Tenant" type="Node2D" parent="."]
+position = Vector2( 517, 473 )
+
+[node name="EvictedLabel" type="Label" parent="."]
+anchor_right = 1.0
+margin_top = 339.0
+margin_bottom = 438.0
+custom_colors/font_color = Color( 0.784314, 0.0588235, 0.0588235, 1 )
+custom_fonts/font = ExtResource( 1 )
+text = "INQUILINO
+AHUYENTADO"
+align = 1
+valign = 1

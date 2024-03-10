@@ -1,4 +1,5 @@
 using System;
+using System.Threading.Tasks;
 using Godot;
 
 public class GameManager : Node
@@ -11,10 +12,13 @@ public class GameManager : Node
     [Signal]
     delegate void NewJournalAction(string sentence);
 
+    [Signal]
+    delegate void UpdateRatings(int numBadRatings);
+
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
-        GD.Print("INITIALIZING GAME MANAGER"); 
+        GD.Print("INITIALIZING GAME MANAGER");
 
         // Handle the singleton on the C# side. GDScript side can access via an
         // Autoload property.
@@ -25,6 +29,14 @@ public class GameManager : Node
         else
         {
             throw new Exception("Can't have more than one GameManager");
+        }
+    }
+
+    public override void _Process(float delta)
+    {
+        if (Input.IsActionJustPressed("CheatNextLevel"))
+        {
+            GoToNextLevel();
         }
     }
 
@@ -79,5 +91,120 @@ public class GameManager : Node
 
         GD.Print(sentence);
         EmitSignal(nameof(NewJournalAction), sentence);
+    }
+
+    public Node currentLevel = null;
+
+    public void GoToMainMenu()
+    {
+        currentLevel?.QueueFree();
+
+        var mainMenuScene = GD.Load<PackedScene>("res://scenes/MainMenu.tscn");
+        var mainMenu = mainMenuScene.Instance();
+        AddChild(mainMenu);
+
+        currentLevel = mainMenu;
+    }
+
+    public async Task PlayOutro(PackedScene outroScene)
+    {
+        var outro =
+            outroScene.Instance() as LevelIntro
+            ?? throw new Exception("Outro scene must be a LevelIntro");
+        outro.IsOutro = true;
+
+        GetTree().Root.AddChild(outro);
+
+        await ToSignal(outro, "Finished");
+
+        outro.QueueFree();
+    }
+
+    public async void LoadLevel(
+        PackedScene introScene,
+        PackedScene outroScene,
+        PackedScene levelScene
+    )
+    {
+        currentLevel?.QueueFree();
+
+        if (outroScene != null)
+        {
+            await PlayOutro(outroScene);
+        }
+
+        var intro = introScene.Instance();
+        GetTree().Root.AddChild(intro);
+
+        await ToSignal(intro, "Finished");
+
+        intro.QueueFree();
+
+        var level = levelScene.Instance();
+        GetTree().Root.AddChild(level);
+        currentLevel = level;
+    }
+
+    public async void LoadEndGame(PackedScene outroScene)
+    {
+        currentLevel?.QueueFree();
+
+        await PlayOutro(outroScene);
+
+        var endGame = GD.Load<PackedScene>("res://scenes/EndGame.tscn").Instance();
+        GetTree().Root.AddChild(endGame);
+        currentLevel = endGame;
+    }
+
+    public int levelIndex = -1;
+
+    public void GoToNextLevel()
+    {
+        levelIndex += 1;
+
+        switch (levelIndex)
+        {
+            // TODO: !!!! ADJUST MAIN.tscn to load different levels
+            case 0:
+                LoadLevel(
+                    introScene: GD.Load<PackedScene>("res://scenes/Tenants/PoshIntro.tscn"),
+                    outroScene: null,
+                    levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
+                );
+                break;
+            case 1:
+                LoadLevel(
+                    introScene: GD.Load<PackedScene>("res://scenes/Tenants/BlueCollarIntro.tscn"),
+                    outroScene: GD.Load<PackedScene>("res://scenes/Tenants/PoshIntro.tscn"),
+                    levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
+                );
+                break;
+            case 2:
+                LoadLevel(
+                    introScene: GD.Load<PackedScene>("res://scenes/Tenants/PainterIntro.tscn"),
+                    outroScene: GD.Load<PackedScene>("res://scenes/Tenants/BlueCollarIntro.tscn"),
+                    levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
+                );
+                break;
+            case 3:
+                LoadLevel(
+                    introScene: GD.Load<PackedScene>("res://scenes/Tenants/InvestorIntro.tscn"),
+                    outroScene: GD.Load<PackedScene>("res://scenes/Tenants/PainterIntro.tscn"),
+                    levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
+                );
+                break;
+            case 4:
+                LoadLevel(
+                    introScene: GD.Load<PackedScene>("res://scenes/Tenants/GhostHunterIntro.tscn"),
+                    outroScene: GD.Load<PackedScene>("res://scenes/Tenants/InvestorIntro.tscn"),
+                    GD.Load<PackedScene>("res://scenes/Main.tscn")
+                );
+                break;
+            case 5:
+                LoadEndGame(
+                    outroScene: GD.Load<PackedScene>("res://scenes/Tenants/GhostHunterIntro.tscn")
+                );
+                break;
+        }
     }
 }
