@@ -20,13 +20,13 @@ public class Couch : Area2D, IInteractiveProp
 
     public override void _Process(float delta)
     {
-        if (GetOverlappingAreas()
+        /*if (GetOverlappingAreas()
             .Cast<KinematicBody2D>()
             .Any(a => a.TryGetPlayer(out Player player)))
         {
             GD.Print("player detected");
             InteractionEmitted(InteractionLevel.cosmetic);
-        }
+        }*/
     }
 
     //  // Called every frame. 'delta' is the elapsed time since the previous frame.

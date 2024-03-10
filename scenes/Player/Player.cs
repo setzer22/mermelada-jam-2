@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using System.Runtime.Versioning;
 using Godot;
 
@@ -7,6 +9,19 @@ public class Player : KinematicBody2D
     private float elapsed = 0f;
     private Vector2 velocity = new Vector2();
     private float timeToNextBlink = 0f;
+    private List<ItemProp> interactablesInRange = new List<ItemProp>();
+    private int selectedInteractableIdx = 0;
+    private float sayTextElapsed = 0f;
+    private bool sayingText = false;
+
+    private Label _sayText;
+    private Label SayText => _sayText ??= GetNode<Label>("SayText");
+
+    private Node2D _sprite;
+    private Node2D Sprite => _sprite ??= GetNode<Node2D>("Sprite");
+
+    private Area2D _influenceRadius;
+    private Area2D InfluenceRadius => _influenceRadius ??= GetNode<Area2D>("InfluenceRadius");
 
     // Store the initial sprite translation so that we can add an offset to it
     private Vector2 initialSpriteTranslation;
@@ -28,15 +43,63 @@ public class Player : KinematicBody2D
 
     [Export]
     private float Opacity = 0.9f;
+
     [Export]
     private float OpacityAnimAmplitude = 0.1f;
+
     [Export]
     private float OpacityAnimFrequency = 1f;
+    
+    [Export]
+    private float MessageTime = 2f;
+
+    [Export]
+    private float MessageClearTime = 5f;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
     {
         initialSpriteTranslation = GetNode<Node2D>("Sprite").Position;
+
+        InfluenceRadius.Connect("body_entered", this, "_OnBodyEnteredInfluenceRadius");
+        InfluenceRadius.Connect("body_exited", this, "_OnBodyExitedInfluenceRadius");
+
+        SayText.Text = "";
+    }
+
+    public static ItemProp BodyToItemProp(Node body)
+    {
+        // The prop is typically the parent of the collider, we check both just
+        // in case...
+        if (body is ItemProp item)
+        {
+            return item;
+        }
+        else if (body.GetParent() is ItemProp item_)
+        {
+            return item_;
+        }
+        return null;
+    }
+
+    public void _OnBodyEnteredInfluenceRadius(Node body)
+    {
+        selectedInteractableIdx = 0;
+        var itemProp = BodyToItemProp(body);
+        if (itemProp != null)
+        {
+            interactablesInRange.Add(itemProp);
+        }
+    }
+
+    public void _OnBodyExitedInfluenceRadius(Node body)
+    {
+        var itemProp = BodyToItemProp(body);
+        if (itemProp != null)
+        {
+            itemProp.highlighted = false;
+            interactablesInRange.Remove(itemProp);
+        }
     }
 
     // Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -45,18 +108,17 @@ public class Player : KinematicBody2D
         elapsed += delta;
 
         // Float animation
-        var sprite = GetNode<Node2D>("Sprite");
-        sprite.Position =
+        Sprite.Position =
             initialSpriteTranslation
             + Vector2.Up * Mathf.Sin(elapsed * FloatAnimFrequency) * FloatAnimAmplitude;
 
         var newOpacity = Opacity + Mathf.Sin(elapsed * OpacityAnimFrequency) * OpacityAnimAmplitude;
-        sprite.Modulate = new Color(1, 1, 1, newOpacity);
+        Sprite.Modulate = new Color(1, 1, 1, newOpacity);
 
         // Flip sprite towards movement direction
-        if (velocity.x != 0)
+        if (Mathf.Abs(velocity.x) > 20f)
         {
-            foreach (var ch in sprite.GetChildren())
+            foreach (var ch in Sprite.GetChildren())
             {
                 if (ch is AnimatedSprite s)
                 {
@@ -65,6 +127,7 @@ public class Player : KinematicBody2D
             }
         }
 
+        // Random blink
         if (timeToNextBlink > 0)
         {
             timeToNextBlink -= delta;
@@ -74,19 +137,61 @@ public class Player : KinematicBody2D
             Blink();
             timeToNextBlink = (float)GD.RandRange(BlinkMin, BlinkMax);
         }
+
+        // Interactables
+        if (interactablesInRange.Count > 0)
+        {
+            // Allow cycling interactables
+            if (Input.IsActionJustPressed("NextInteractable"))
+            {
+                selectedInteractableIdx += 1;
+            }
+            selectedInteractableIdx %= interactablesInRange.Count;
+
+            // Highlight the closest interactable
+            interactablesInRange.ForEach(i => i.highlighted = false);
+            var closest = interactablesInRange
+                .OrderBy(i => (i.GlobalPosition - GlobalPosition).LengthSquared())
+                .Skip(selectedInteractableIdx)
+                .First();
+            closest.highlighted = true;
+        }
+        
+        // Speaking via text
+        if (this.sayingText) {
+            this.sayTextElapsed += delta;
+            SayText.PercentVisible = this.sayTextElapsed / MessageTime;
+            
+            if (this.sayTextElapsed > MessageClearTime) {
+                this.sayingText = false;
+                SayText.Text = "";
+                SayText.PercentVisible = 0f;
+            }
+        }
+        
+        if (Input.IsActionJustPressed("Debug")) {
+            this.Say("Esto aquí no va...");
+        }
+    }
+
+    public void Say(string text) {
+        SayText.Text = text;
+        SayText.PercentVisible = 0f;
+        this.sayTextElapsed = 0f;
+        this.sayingText = true;
     }
 
     // Don't
     public void Blink()
     {
-        var eyes = GetNode<AnimatedSprite>("Sprite/Eyes");
+        var eyes = Sprite.GetNode<AnimatedSprite>("Eyes");
         eyes.Frame = 0;
         eyes.Playing = true;
     }
 
     public override void _PhysicsProcess(float delta)
     {
-        var movement = Input.GetVector("ui_left", "ui_right", "ui_up", "ui_down");
+        var movement = Input.GetVector("MoveLeft", "MoveRight", "MoveUp", "MoveDown");
         velocity = movement.Normalized() * MoveSpeed;
         velocity = MoveAndSlide(velocity);
     }
