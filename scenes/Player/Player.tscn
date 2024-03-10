@@ -4,7 +4,7 @@
 [ext_resource path="res://scenes/Player/Player.cs" type="Script" id=2]
 [ext_resource path="res://assets/ghost_base.png" type="Texture" id=3]
 [ext_resource path="res://resources/sprites/generic/circle-blurred.png" type="Texture" id=4]
-[ext_resource path="res://assets/Fonts/MadimiOne-Regular.ttf" type="DynamicFontData" id=5]
+[ext_resource path="res://resources/fonts/Texts_Font.ttf" type="DynamicFontData" id=5]
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
@@ -105,7 +105,7 @@ script = ExtResource( 2 )
 position = Vector2( -2, -60 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 8 )
-frame = 3
+frame = 1
 playing = true
 
 [node name="Particles2D" type="Particles2D" parent="Sprite/Base"]

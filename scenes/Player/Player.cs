@@ -70,8 +70,8 @@ public class Player : KinematicBody2D, IGrabber
     {
         initialSpriteTranslation = GetNode<Node2D>("Sprite").Position;
 
-        InfluenceRadius.Connect("body_entered", this, "_OnBodyEnteredInfluenceRadius");
-        InfluenceRadius.Connect("body_exited", this, "_OnBodyExitedInfluenceRadius");
+        InfluenceRadius.Connect("body_entered", this, nameof(_OnBodyEnteredInfluenceRadius));
+        InfluenceRadius.Connect("body_exited", this, nameof(_OnBodyExitedInfluenceRadius));
 
         SayText.Text = "";
     }
