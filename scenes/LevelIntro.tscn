@@ -25,12 +25,15 @@ align = 1
 
 [node name="Subtitle" type="Label" parent="."]
 anchor_right = 1.0
+margin_left = 53.0
 margin_top = 141.0
+margin_right = -49.0
 margin_bottom = 184.0
 custom_fonts/font = ExtResource( 3 )
 text = "<Subtitle>"
 align = 1
 valign = 1
+autowrap = true
 
 [node name="Tenant" type="Node2D" parent="."]
 position = Vector2( 517, 473 )

@@ -33,6 +33,7 @@ polygon = PoolVector2Array( -121, 41, 204, 41, 205, 92, 174, 108, -197, 110 )
 
 [node name="Surface" type="Node" parent="." index="3"]
 script = ExtResource( 5 )
+Key = "couch"
 
 [node name="PlaceItemPos" type="Position2D" parent="." index="4"]
 position = Vector2( 97, -76 )

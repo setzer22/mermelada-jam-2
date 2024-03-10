@@ -4,11 +4,13 @@
 [ext_resource path="res://scenes/Tenants/BlueCollar.tscn" type="PackedScene" id=2]
 
 [node name="LevelIntro" instance=ExtResource( 1 )]
+OutroText = "Ya aguanto suficiente mierda en el trabajo, prefiero hacer transbordo."
 
 [node name="Title" parent="." index="1"]
-text = "BlueCollar"
+text = "La Oficial de 1a"
 
 [node name="Subtitle" parent="." index="2"]
-text = "TODO Subtitle"
+text = "Qué barato! Y me queda cerca
+del trabajo y del cine..."
 
 [node name="BlueCollar" parent="Tenant" index="0" instance=ExtResource( 2 )]

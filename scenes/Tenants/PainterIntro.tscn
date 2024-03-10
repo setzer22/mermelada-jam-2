@@ -4,11 +4,14 @@
 [ext_resource path="res://scenes/Tenants/Painter.tscn" type="PackedScene" id=2]
 
 [node name="LevelIntro" instance=ExtResource( 1 )]
+OutroText = "Vivir sola es peor que estar en la granja con los gatos..."
 
 [node name="Title" parent="." index="1"]
-text = "Painter"
+text = "La Artista"
 
 [node name="Subtitle" parent="." index="2"]
-text = "TODO INTRO"
+text = "Luz natural y vistas a la ciudad,
+inspiración allé voy!"
+autowrap = true
 
 [node name="Painter" parent="Tenant" index="0" instance=ExtResource( 2 )]
