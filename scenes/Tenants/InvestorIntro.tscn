@@ -4,5 +4,12 @@
 [ext_resource path="res://scenes/Tenants/Investor.tscn" type="PackedScene" id=2]
 
 [node name="LevelIntro" instance=ExtResource( 1 )]
+OutroText = "Mejor me paso a las criptos, menos sustos"
+
+[node name="Title" parent="." index="1"]
+text = "El Inversor"
+
+[node name="Subtitle" parent="." index="2"]
+text = "Vaya chollo! El ladrillo nunca baja, jejeje"
 
 [node name="Investor" parent="Tenant" index="0" instance=ExtResource( 2 )]

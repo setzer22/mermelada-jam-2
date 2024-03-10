@@ -4,9 +4,7 @@
 [ext_resource path="res://scenes/Tenants/Posh.tscn" type="PackedScene" id=2]
 
 [node name="LevelIntro" instance=ExtResource( 1 )]
-
-[node name="ColorRect" parent="." index="0"]
-color = Color( 0.0352941, 0.0352941, 0.0352941, 1 )
+OutroText = "Tampoco es que la zona fuese tan buena, no tienen ni bubbletea."
 
 [node name="Title" parent="." index="1"]
 text = "La Pija"

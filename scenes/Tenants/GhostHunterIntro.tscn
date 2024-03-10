@@ -4,5 +4,13 @@
 [ext_resource path="res://scenes/Tenants/GhostHunter.tscn" type="PackedScene" id=2]
 
 [node name="LevelIntro" instance=ExtResource( 1 )]
+OutroText = "Aquí no hay quien haga un podcast de misterio."
+
+[node name="Title" parent="." index="1"]
+text = "El Cazafantasmas"
+
+[node name="Subtitle" parent="." index="2"]
+text = "Las vibes son horribles, 
+seguro que hay fantasmas :D"
 
 [node name="GhostHunter" parent="Tenant" index="0" instance=ExtResource( 2 )]

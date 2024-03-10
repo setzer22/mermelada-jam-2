@@ -174,22 +174,22 @@ public class GameManager : Node
                 break;
             case 1:
                 LoadLevel(
-                    introScene: GD.Load<PackedScene>("res://scenes/Tenants/BlueCollarIntro.tscn"),
+                    introScene: GD.Load<PackedScene>("res://scenes/Tenants/PainterIntro.tscn"),
                     outroScene: GD.Load<PackedScene>("res://scenes/Tenants/PoshIntro.tscn"),
                     levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
                 );
                 break;
             case 2:
                 LoadLevel(
-                    introScene: GD.Load<PackedScene>("res://scenes/Tenants/PainterIntro.tscn"),
-                    outroScene: GD.Load<PackedScene>("res://scenes/Tenants/BlueCollarIntro.tscn"),
+                    introScene: GD.Load<PackedScene>("res://scenes/Tenants/BlueCollarIntro.tscn"),
+                    outroScene: GD.Load<PackedScene>("res://scenes/Tenants/PainterIntro.tscn"),
                     levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
                 );
                 break;
             case 3:
                 LoadLevel(
                     introScene: GD.Load<PackedScene>("res://scenes/Tenants/InvestorIntro.tscn"),
-                    outroScene: GD.Load<PackedScene>("res://scenes/Tenants/PainterIntro.tscn"),
+                    outroScene: GD.Load<PackedScene>("res://scenes/Tenants/BlueCollarIntro.tscn"),
                     levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
                 );
                 break;

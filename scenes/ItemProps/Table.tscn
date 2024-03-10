@@ -34,4 +34,4 @@ polygon = PoolVector2Array( -91, -23, -150, 26, 100, 25, 160, -24 )
 script = ExtResource( 5 )
 
 [node name="PlaceItemPos" type="Position2D" parent="." index="4"]
-position = Vector2( 77, -142 )
+position = Vector2( 93, -141 )
