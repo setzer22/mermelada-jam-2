@@ -19,6 +19,7 @@ shader_param/add_margins = true
 radius = 12.0416
 
 [node name="Pillow" instance=ExtResource( 1 )]
+HumanReadableName = "el cojín"
 
 [node name="Shade" parent="." index="0"]
 position = Vector2( 0, -20.5375 )

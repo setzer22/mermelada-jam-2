@@ -10,6 +10,14 @@ public interface IGrabber
 
 public class Grabbable : Node
 {
+    /// <summary>
+    /// The key is used for the purposes of identifying this object to do
+    /// certain special effects. If this does not have any specific behavior, it
+    /// can be left blank.
+    /// </summary>
+    [Export]
+    public string Key = "";
+
     public ItemProp Prop =>
         GetParent() as ItemProp ?? throw new Exception("Component should be child of ItemProp");
 
@@ -70,8 +78,6 @@ public class Grabbable : Node
         parentProp.RemoveChild(Prop);
         surface.Prop.AddChild(Prop);
         Prop.GlobalPosition = globalPos;
-
-        GD.Print($"Moving from {Prop.Position} to {surface.PlaceItemPos}");
 
         // We start a tween to move the object towards the surface
         GrabTween.InterpolateProperty(

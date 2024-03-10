@@ -1,5 +1,6 @@
 using System;
 using System.Diagnostics;
+using System.Reflection;
 using Godot;
 
 [Tool]
@@ -7,6 +8,15 @@ public class ItemProp : Node2D
 {
     [Export]
     public bool highlighted = false;
+
+    /// <summary>
+    /// The name of this prop. Will be inserted in a sentence template like
+    /// this, so it should include an article if appropiate.
+    ///
+    /// $"Coloqué {a.HumanReadableName} sobre {b.HumanReadableName}";
+    /// </summary>
+    [Export]
+    public string HumanReadableName = "<MISSING>";
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready() { }

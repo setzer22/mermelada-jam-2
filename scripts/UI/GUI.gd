@@ -32,6 +32,10 @@ func _ready():
 	inkProgressBar = $Panel/PenTexture/InkProgressBar
 	startsButton = $Panel/StarsButton
 	
+	GameManager.connect("InkSpent", self, "_on_ink_spent");
+	GameManager.connect("NewJournalAction", self, "_on_new_journal_action")
+	GameManager.connect("UpdateRatings", self, "_on_new_ratings")
+	
 	$Panel/ClockProgress/Timer.wait_time = 1.0
 	$Panel/ClockProgress/Timer.start()
 
@@ -74,4 +78,21 @@ func _input(event):
 			rating.text = BAD_RATING_STRINGS[index]
 			index += 1
 			rating.add_color_override("font_color", Color(BAD_COLOR_RATING))
-			
+
+func _on_ink_spent(amount):
+	inkProgressBar.value -= amount
+
+func _on_new_journal_action(sentence):
+	journal.get_node("ActionsText").text += "\n - " + sentence;
+	
+	
+	# Small rotation wiggle -- this helps the player notice that a new action has been added
+	# to the log even when they don't have it open.
+	yield(get_tree().create_timer(0.2), "timeout")
+	$Panel/JournalText/JournalAnimation.play("Wiggle")
+
+func _on_new_ratings(num_bad_ratings):
+	for i in range(0, num_bad_ratings):
+		var rating = houseRatingVBoxContainer.get_child(i)
+		rating.text = BAD_RATING_STRINGS[i]
+		rating.add_color_override("font_color", Color(BAD_COLOR_RATING))

@@ -10,7 +10,7 @@ func _ready():
 	get_node("%QuitButton").connect("onClick", self, "_on_QuitButton_pressed")
 
 func _on_StartButton_pressed():
-	get_tree().change_scene(mainGameScene.resource_path)
+	GameManager.GoToNextLevel()
 
 func _on_QuitButton_pressed():
 	get_tree().quit()
