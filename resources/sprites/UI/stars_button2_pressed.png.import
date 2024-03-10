@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/clock_progress_night.png-29df1513109855fb2a9abbacfcc421aa.stex"
+path="res://.import/stars_button2_pressed.png-050e39d115f556d83b578c4a554934a3.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/sprites/UI/clock_progress_night.png"
-dest_files=[ "res://.import/clock_progress_night.png-29df1513109855fb2a9abbacfcc421aa.stex" ]
+source_file="res://resources/sprites/UI/stars_button2_pressed.png"
+dest_files=[ "res://.import/stars_button2_pressed.png-050e39d115f556d83b578c4a554934a3.stex" ]
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0

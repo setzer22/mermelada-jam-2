@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/clock_progress_day.png-be6af3665ec035bf556e09dd783e3f9f.stex"
+path="res://.import/journal.png-7e14cfa5e6fc4ae2b97e64288bc5ea2a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/sprites/UI/clock_progress_day.png"
-dest_files=[ "res://.import/clock_progress_day.png-be6af3665ec035bf556e09dd783e3f9f.stex" ]
+source_file="res://resources/sprites/UI/journal.png"
+dest_files=[ "res://.import/journal.png-7e14cfa5e6fc4ae2b97e64288bc5ea2a.stex" ]
 
 [params]
 
@@ -31,5 +31,5 @@ process/invert_color=false
 process/normal_map_invert_y=false
 stream=false
 size_limit=0
-detect_3d=true
+detect_3d=false
 svg/scale=1.0
