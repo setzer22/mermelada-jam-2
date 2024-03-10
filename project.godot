@@ -14,6 +14,10 @@ config/name="MermeladaJam2"
 run/main_scene="res://scenes/MainMenu.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+GameManager="*res://scenes/GameManager.tscn"
+
 [editor_plugins]
 
 enabled=PoolStringArray( "res://addons/LDtk-Importer/plugin.cfg" )

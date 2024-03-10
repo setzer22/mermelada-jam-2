@@ -18,6 +18,9 @@ func _ready():
 	journal.visible = false
 	inkProgressBar = $Panel/PenTexture/InkProgressBar
 	
+	GameManager.connect("InkSpent", self, "_on_ink_spent");
+	GameManager.connect("NewJournalAction", self, "_on_new_journal_action")
+	
 	$Panel/ClockProgress/Timer.wait_time = 1.0
 	$Panel/ClockProgress/Timer.start()
 
@@ -51,3 +54,15 @@ func _input(event):
 		else:
 			inkProgressBar.value = 0
 			# PONER UN AVISO DE QUE NO TE QUEDA TINTA
+
+func _on_ink_spent(amount):
+	inkProgressBar.value -= amount
+
+func _on_new_journal_action(sentence):
+	journal.get_node("ActionsText").text += "\n - " + sentence;
+	
+	
+	# Small rotation wiggle -- this helps the player notice that a new action has been added
+	# to the log even when they don't have it open.
+	yield(get_tree().create_timer(0.2), "timeout")
+	$Panel/JournalText/JournalAnimation.play("Wiggle")

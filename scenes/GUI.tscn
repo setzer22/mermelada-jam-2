@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://resources/fonts/orange juice 2.0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://resources/sprites/UI/Star_Full2.png" type="Texture" id=2]
@@ -27,6 +27,21 @@ font_data = ExtResource( 15 )
 
 [sub_resource type="CanvasItemMaterial" id=3]
 blend_mode = 1
+
+[sub_resource type="Animation" id=5]
+resource_name = "Wiggle"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3, 0.4, 0.5 ),
+"transitions": PoolRealArray( 1, 2.82843, 2.82843, 2.82843, 2.82843, 2.82843 ),
+"update": 0,
+"values": [ 0.0, 5.0, -5.0, 3.0, 1.0, 0.0 ]
+}
 
 [node name="GUI" type="Control"]
 anchor_right = 1.0
@@ -216,7 +231,7 @@ entrar a vivir
 "
 align = 1
 
-[node name="ColorRect" type="ColorRect" parent="Panel"]
+[node name="JournalText" type="ColorRect" parent="Panel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -225,9 +240,10 @@ margin_left = -207.0
 margin_top = -59.0
 margin_right = -9.0
 margin_bottom = -25.0
+rect_pivot_offset = Vector2( 99, 17 )
 color = Color( 0, 0, 0, 0.0980392 )
 
-[node name="JournalTextHelpUI" type="Label" parent="Panel/ColorRect"]
+[node name="JournalTextHelpUI" type="Label" parent="Panel/JournalText"]
 material = SubResource( 3 )
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -235,6 +251,11 @@ custom_fonts/font = SubResource( 4 )
 text = "Press K to show Journal"
 align = 1
 valign = 1
+
+[node name="Tween" type="Tween" parent="Panel/JournalText"]
+
+[node name="JournalAnimation" type="AnimationPlayer" parent="Panel/JournalText"]
+anims/Wiggle = SubResource( 5 )
 
 [node name="Journal" type="TextureRect" parent="Panel"]
 visible = false
@@ -252,16 +273,16 @@ expand = true
 [node name="ActionsText" type="Label" parent="Panel/Journal"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -85.0
+margin_left = -73.192
 margin_top = 16.0
-margin_right = 85.0
-margin_bottom = 47.0
+margin_right = 96.808
+margin_bottom = 70.0
 custom_colors/font_color = Color( 0.27451, 0.478431, 0.0509804, 1 )
 custom_fonts/font = SubResource( 4 )
-text = "- El objeto X ha sido
-movido hacia Y"
-align = 1
+text = "- El objeto X ha sido movido hacia Y
+- Aasdasdasd"
 valign = 1
+autowrap = true
 
 [connection signal="pressed" from="Panel/StarsButton" to="." method="_on_StarsButton_pressed"]
 [connection signal="timeout" from="Panel/ClockProgress/Timer" to="." method="_on_Timer_timeout"]

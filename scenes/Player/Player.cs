@@ -220,6 +220,9 @@ public class Player : KinematicBody2D, IGrabber
                     if (!s.HasItem())
                     {
                         this.grabbedObject.Drop(s);
+
+                        GameManager.Singleton.PlaceItemAction(this.grabbedObject, s);
+
                         this.grabbedObject = null;
                         handled = true;
                     }
@@ -237,6 +240,9 @@ public class Player : KinematicBody2D, IGrabber
             if (!handled && selected.SwitchableComponent() is Switchable sw)
             {
                 sw.Switch();
+
+                GameManager.Singleton.SwitchedItemAction(sw, this.grabbedObject);
+
                 handled = true;
             }
 

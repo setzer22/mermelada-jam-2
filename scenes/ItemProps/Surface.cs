@@ -3,6 +3,14 @@ using Godot;
 
 public class Surface : Node
 {
+    /// <summary>
+    /// The key is used for the purposes of identifying this object to do
+    /// certain special effects. If this does not have any specific behavior, it
+    /// can be left blank.
+    /// </summary>
+    [Export]
+    public string Key = "";
+
     public ItemProp Prop =>
         GetParent() as ItemProp ?? throw new Exception("Component should be child of ItemProp");
 

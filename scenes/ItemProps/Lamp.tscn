@@ -17,6 +17,7 @@ shader_param/inside = false
 shader_param/add_margins = true
 
 [node name="Lamp" instance=ExtResource( 1 )]
+HumanReadableName = "la lámpara"
 
 [node name="Shade" parent="." index="0"]
 position = Vector2( -6.49, -142.433 )

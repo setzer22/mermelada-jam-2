@@ -16,6 +16,7 @@ shader_param/add_margins = true
 radius = 13.0384
 
 [node name="Painting" instance=ExtResource( 1 )]
+HumanReadableName = "el cuadro"
 
 [node name="Shade" parent="." index="0"]
 position = Vector2( 0, -39.3865 )
