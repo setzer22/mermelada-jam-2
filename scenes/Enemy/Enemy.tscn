@@ -29,7 +29,6 @@ shape = SubResource( 2 )
 shape = SubResource( 1 )
 
 [node name="FearBox" parent="." instance=ExtResource( 3 )]
-visible = false
 margin_left = -24.0
 margin_top = -128.0
 margin_right = 16.0
