@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://resources/fonts/orange juice 2.0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://resources/sprites/UI/Star_Full.png" type="Texture" id=2]
@@ -18,6 +18,9 @@ bg_color = Color( 1, 0.764706, 0.588235, 0 )
 size = 42
 font_data = ExtResource( 1 )
 
+[sub_resource type="CanvasItemMaterial" id=3]
+blend_mode = 1
+
 [node name="GUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -31,10 +34,10 @@ custom_styles/panel = SubResource( 1 )
 [node name="PenTexture" type="TextureRect" parent="Panel"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -140.0
+margin_left = -136.0
 margin_top = 21.0
-margin_right = 140.0
-margin_bottom = 80.0
+margin_right = 142.0
+margin_bottom = 72.0
 
 [node name="InkProgressBar" type="TextureProgress" parent="Panel/PenTexture"]
 anchor_left = 0.5
@@ -81,20 +84,20 @@ texture = ExtResource( 2 )
 [node name="ClockBackground" type="TextureRect" parent="Panel"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -243.0
-margin_top = 15.0
-margin_right = -11.0
-margin_bottom = 95.0
+margin_left = -251.0
+margin_top = 11.0
+margin_right = -19.0
+margin_bottom = 91.0
 texture = ExtResource( 4 )
 expand = true
 
 [node name="ClockProgress" type="TextureProgress" parent="Panel"]
 anchor_left = 1.0
 anchor_right = 1.0
-margin_left = -97.0
-margin_top = 21.0
-margin_right = -33.0
-margin_bottom = 85.0
+margin_left = -105.0
+margin_top = 17.0
+margin_right = -41.0
+margin_bottom = 81.0
 max_value = 60.0
 texture_under = ExtResource( 7 )
 texture_progress = ExtResource( 9 )
@@ -118,8 +121,9 @@ valign = 1
 [node name="HouseRating" type="TextureRect" parent="Panel"]
 anchor_top = 0.5
 anchor_bottom = 0.5
+margin_left = 11.0
 margin_top = -170.0
-margin_right = 301.0
+margin_right = 312.0
 margin_bottom = 204.0
 texture = ExtResource( 4 )
 expand = true
@@ -150,17 +154,24 @@ text = "- LA CASA TIENE RUIDOS"
 align = 1
 valign = 1
 
-[node name="JournalTextHelpUI" type="Label" parent="Panel"]
+[node name="ColorRect" type="ColorRect" parent="Panel"]
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -209.0
-margin_top = -38.0
-margin_right = -18.0
+margin_left = -181.0
+margin_top = -58.0
+margin_right = -9.0
 margin_bottom = -24.0
+color = Color( 0, 0, 0, 0.0980392 )
+
+[node name="JournalTextHelpUI" type="Label" parent="Panel/ColorRect"]
+material = SubResource( 3 )
+anchor_right = 1.0
+anchor_bottom = 1.0
 text = "Press K to show Journal"
-align = 2
+align = 1
+valign = 1
 
 [node name="Journal" type="TextureRect" parent="Panel"]
 visible = false
