@@ -13,6 +13,13 @@ public class Inventory : Node2D
 
     private static Dictionary<string, ItemData> ItemDB = new Dictionary<string, ItemData>();
 
+    public override void _Ready()
+    {
+        // TO DO this is a mock that uses the scene inventory. Final logic should switch to the player one
+        SceneInventoryData.Instance.OnInventoryChanged += delegate { GD.Print("inventory class receiving data event mock"); };
+        GD.Print($"on ready scene inventory has {SceneInventoryData.Instance.GetPropInventory().Length} props");
+    }
+
     public override void _EnterTree()
     {
         base._EnterTree();
