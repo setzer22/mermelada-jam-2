@@ -1,7 +1,7 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://resources/fonts/orange juice 2.0.ttf" type="DynamicFontData" id=1]
-[ext_resource path="res://resources/sprites/UI/Star_Full.png" type="Texture" id=2]
+[ext_resource path="res://resources/sprites/UI/Star_Full2.png" type="Texture" id=2]
 [ext_resource path="res://resources/sprites/UI/stars_button2_pressed.png" type="Texture" id=3]
 [ext_resource path="res://resources/sprites/UI/clock_day.png" type="Texture" id=4]
 [ext_resource path="res://resources/sprites/UI/stars_button2_hover.png" type="Texture" id=5]
@@ -9,7 +9,6 @@
 [ext_resource path="res://resources/sprites/UI/clock_background.png" type="Texture" id=7]
 [ext_resource path="res://scripts/UI/GUI.gd" type="Script" id=8]
 [ext_resource path="res://resources/sprites/UI/clock_progress.png" type="Texture" id=9]
-[ext_resource path="res://resources/sprites/UI/ink_background.png" type="Texture" id=10]
 [ext_resource path="res://resources/sprites/UI/Pen.png" type="Texture" id=11]
 [ext_resource path="res://resources/sprites/UI/journal2.png" type="Texture" id=12]
 [ext_resource path="res://resources/sprites/UI/stars_button2.png" type="Texture" id=13]
@@ -52,13 +51,12 @@ expand = true
 [node name="InkProgressBar" type="TextureProgress" parent="Panel/PenTexture"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -23.0
-margin_top = 30.0
-margin_right = 41.0
-margin_bottom = 46.0
-rect_scale = Vector2( 2.5, 0.75 )
+margin_left = -27.0
+margin_top = 25.0
+margin_right = 37.0
+margin_bottom = 41.0
+rect_scale = Vector2( 2.7, 1.337 )
 value = 100.0
-texture_under = ExtResource( 10 )
 texture_progress = ExtResource( 6 )
 fill_mode = 1
 
@@ -73,28 +71,28 @@ texture_hover = ExtResource( 5 )
 expand = true
 
 [node name="Start1" type="Sprite" parent="Panel/StarsButton"]
-position = Vector2( 62, 24 )
-scale = Vector2( 0.8, 0.8 )
+position = Vector2( 60.2, 25.2 )
+scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 2 )
 
 [node name="Start2" type="Sprite" parent="Panel/StarsButton"]
-position = Vector2( 102, 24 )
-scale = Vector2( 0.8, 0.8 )
+position = Vector2( 100.2, 25.2 )
+scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 2 )
 
 [node name="Start3" type="Sprite" parent="Panel/StarsButton"]
-position = Vector2( 142, 24 )
-scale = Vector2( 0.8, 0.8 )
+position = Vector2( 140.2, 25.2 )
+scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 2 )
 
 [node name="Start4" type="Sprite" parent="Panel/StarsButton"]
-position = Vector2( 182, 24 )
-scale = Vector2( 0.8, 0.8 )
+position = Vector2( 180.2, 25.2 )
+scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 2 )
 
 [node name="Star5" type="Sprite" parent="Panel/StarsButton"]
-position = Vector2( 222, 24 )
-scale = Vector2( 0.8, 0.8 )
+position = Vector2( 220.2, 25.2 )
+scale = Vector2( 1.2, 1.2 )
 texture = ExtResource( 2 )
 
 [node name="ClockBackground" type="TextureRect" parent="Panel"]

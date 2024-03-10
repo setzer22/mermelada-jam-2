@@ -2,19 +2,19 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/journal.png-7e14cfa5e6fc4ae2b97e64288bc5ea2a.stex"
+path="res://.import/Star_Empty2.png-91a4be183a7bb6979302553283888587.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/sprites/UI/journal.png"
-dest_files=[ "res://.import/journal.png-7e14cfa5e6fc4ae2b97e64288bc5ea2a.stex" ]
+source_file="res://resources/sprites/UI/Star_Empty2.png"
+dest_files=[ "res://.import/Star_Empty2.png-91a4be183a7bb6979302553283888587.stex" ]
 
 [params]
 
-compress/mode=3
+compress/mode=0
 compress/lossy_quality=0.7
 compress/hdr_mode=0
 compress/bptc_ldr=0

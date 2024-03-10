@@ -35,8 +35,6 @@ position = Vector2( 336, 188 )
 
 [node name="Player" parent="YSort" groups=["Player"] instance=ExtResource( 7 )]
 position = Vector2( -481, 170 )
-MessageTime = 1.0
-MessageClearTime = 4.0
 
 [node name="Posh" parent="YSort" instance=ExtResource( 14 )]
 position = Vector2( -696, 200 )
