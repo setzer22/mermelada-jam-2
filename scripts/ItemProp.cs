@@ -1,11 +1,12 @@
 using System;
+using System.Diagnostics;
 using Godot;
 
 [Tool]
 public class ItemProp : Node2D
 {
     [Export]
-    private bool highlighted = false;
+    public bool highlighted = false;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready() { }
@@ -20,5 +21,36 @@ public class ItemProp : Node2D
         {
             // Game code goes here!
         }
+    }
+
+    private T GetInteractionComponent<T>(string nodeName)
+    {
+        if (HasNode(nodeName))
+        {
+            if (GetNode(nodeName) is T t)
+            {
+                return t;
+            }
+            else
+            {
+                throw new Exception($"{nodeName} node is not {typeof(T).Name}?");
+            }
+        }
+        return default;
+    }
+
+    public Grabbable GrabbableComponent()
+    {
+        return GetInteractionComponent<Grabbable>(nameof(Grabbable));
+    }
+
+    public Surface SurfaceComponent()
+    {
+        return GetInteractionComponent<Surface>(nameof(Surface));
+    }
+
+    public Switchable SwitchableComponent()
+    {
+        return GetInteractionComponent<Switchable>(nameof(Switchable));
     }
 }
