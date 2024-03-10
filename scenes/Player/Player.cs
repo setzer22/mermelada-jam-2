@@ -4,7 +4,7 @@ using System.Linq;
 using System.Runtime.Versioning;
 using Godot;
 
-public class Player : KinematicBody2D
+public class Player : KinematicBody2D, IGrabber
 {
     private float elapsed = 0f;
     private Vector2 velocity = new Vector2();
@@ -14,6 +14,12 @@ public class Player : KinematicBody2D
     private float sayTextElapsed = 0f;
     private bool sayingText = false;
 
+    private Grabbable grabbedObject;
+    public Grabbable GrabbedObject
+    {
+        set { grabbedObject = value; }
+    }
+
     private Label _sayText;
     private Label SayText => _sayText ??= GetNode<Label>("SayText");
 
@@ -22,6 +28,9 @@ public class Player : KinematicBody2D
 
     private Area2D _influenceRadius;
     private Area2D InfluenceRadius => _influenceRadius ??= GetNode<Area2D>("InfluenceRadius");
+
+    private Position2D _heldObjectPos;
+    private Position2D HeldObjectPos => _heldObjectPos ??= GetNode<Position2D>("HeldObjectPos");
 
     // Store the initial sprite translation so that we can add an offset to it
     private Vector2 initialSpriteTranslation;
@@ -49,7 +58,7 @@ public class Player : KinematicBody2D
 
     [Export]
     private float OpacityAnimFrequency = 1f;
-    
+
     [Export]
     private float MessageTime = 2f;
 
@@ -125,6 +134,10 @@ public class Player : KinematicBody2D
                     s.FlipH = velocity.x > 0;
                 }
             }
+
+            var hpos = HeldObjectPos.Position;
+            hpos.x = velocity.x > 0 ? Mathf.Abs(hpos.x) : -Mathf.Abs(hpos.x);
+            HeldObjectPos.Position = hpos;
         }
 
         // Random blink
@@ -150,31 +163,71 @@ public class Player : KinematicBody2D
 
             // Highlight the closest interactable
             interactablesInRange.ForEach(i => i.highlighted = false);
-            var closest = interactablesInRange
+            var selected = interactablesInRange
                 .OrderBy(i => (i.GlobalPosition - GlobalPosition).LengthSquared())
                 .Skip(selectedInteractableIdx)
                 .First();
-            closest.highlighted = true;
+            selected.highlighted = true;
+
+            if (selected.GrabbableComponent() is Grabbable g)
+            {
+                if (Input.IsActionJustPressed("Interact"))
+                {
+                    g.Grab(this, HeldObjectPos.Position);
+                }
+            }
+            else if (selected.SurfaceComponent() is Surface s)
+            {
+                if (Input.IsActionJustPressed("Interact"))
+                {
+                    if (this.grabbedObject != null)
+                    {
+                        if (!s.HasItem())
+                        {
+                            this.grabbedObject.Drop(s);
+                            this.grabbedObject = null;
+                        }
+                        else
+                        {
+                            this.Say("No puedo poner más objetos aquí...");
+                        }
+                    }
+                    else
+                    {
+                        this.Say("No tengo nada que poner aquí...");
+                    }
+                }
+            }
         }
-        
+
+        // Grabbed item
+        if (this.grabbedObject != null)
+        {
+            this.grabbedObject.Prop.Position = HeldObjectPos.Position;
+        }
+
         // Speaking via text
-        if (this.sayingText) {
+        if (this.sayingText)
+        {
             this.sayTextElapsed += delta;
             SayText.PercentVisible = this.sayTextElapsed / MessageTime;
-            
-            if (this.sayTextElapsed > MessageClearTime) {
+
+            if (this.sayTextElapsed > MessageClearTime)
+            {
                 this.sayingText = false;
                 SayText.Text = "";
                 SayText.PercentVisible = 0f;
             }
         }
-        
-        if (Input.IsActionJustPressed("Debug")) {
+
+        if (Input.IsActionJustPressed("Debug"))
+        {
             this.Say("Esto aquí no va...");
         }
     }
 
-    public void Say(string text) {
+    public void Say(string text)
+    {
         SayText.Text = text;
         SayText.PercentVisible = 0f;
         this.sayTextElapsed = 0f;

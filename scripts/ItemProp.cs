@@ -21,4 +21,30 @@ public class ItemProp : Node2D
             // Game code goes here!
         }
     }
+
+    private T GetInteractionComponent<T>(string nodeName)
+    {
+        if (HasNode(nodeName))
+        {
+            if (GetNode(nodeName) is T t)
+            {
+                return t;
+            }
+            else
+            {
+                throw new Exception($"{nodeName} node is not {typeof(T).Name}?");
+            }
+        }
+        return default;
+    }
+
+    public Grabbable GrabbableComponent()
+    {
+        return GetInteractionComponent<Grabbable>("Grabbable");
+    }
+
+    public Surface SurfaceComponent()
+    {
+        return GetInteractionComponent<Surface>("Surface");
+    }
 }

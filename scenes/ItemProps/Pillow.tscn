@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/ItemProp.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/pillow_base.png" type="Texture" id=2]
 [ext_resource path="res://assets/pillow_shade.png" type="Texture" id=3]
 [ext_resource path="res://shaders/ItemProp.gdshader" type="Shader" id=4]
+[ext_resource path="res://scenes/ItemProps/Grabbable.cs" type="Script" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -31,3 +32,6 @@ texture = ExtResource( 2 )
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions" index="0"]
 position = Vector2( 0, -19 )
 shape = SubResource( 2 )
+
+[node name="Grabbable" type="Node" parent="." index="3"]
+script = ExtResource( 5 )

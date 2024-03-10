@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/ItemProp.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/table.png" type="Texture" id=2]
 [ext_resource path="res://shaders/ItemProp.gdshader" type="Shader" id=3]
 [ext_resource path="res://assets/table_shade.png" type="Texture" id=4]
+[ext_resource path="res://scenes/ItemProps/Surface.cs" type="Script" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -27,3 +28,9 @@ texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions" index="0"]
 polygon = PoolVector2Array( -91, -23, -150, 26, 100, 25, 160, -24 )
+
+[node name="Surface" type="Node" parent="." index="3"]
+script = ExtResource( 5 )
+
+[node name="PlaceItemPos" type="Position2D" parent="." index="4"]
+position = Vector2( 77, -142 )
