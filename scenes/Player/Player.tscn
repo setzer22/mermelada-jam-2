@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://assets/ghost_eyes.png" type="Texture" id=1]
 [ext_resource path="res://scenes/Player/Player.cs" type="Script" id=2]
 [ext_resource path="res://assets/ghost_base.png" type="Texture" id=3]
+[ext_resource path="res://resources/sprites/generic/circle-blurred.png" type="Texture" id=4]
 
 [sub_resource type="AtlasTexture" id=2]
 atlas = ExtResource( 3 )
@@ -31,6 +32,26 @@ animations = [ {
 "name": "default",
 "speed": 5.0
 } ]
+
+[sub_resource type="Gradient" id=16]
+offsets = PoolRealArray( 0, 0.787654, 1 )
+colors = PoolColorArray( 0.133333, 0.12549, 0.203922, 0.780392, 0.133333, 0.12549, 0.203922, 0.780392, 0.133333, 0.12549, 0.203922, 0.780392 )
+
+[sub_resource type="GradientTexture" id=17]
+gradient = SubResource( 16 )
+
+[sub_resource type="ParticlesMaterial" id=18]
+trail_color_modifier = SubResource( 17 )
+emission_shape = 1
+emission_sphere_radius = 20.0
+flag_disable_z = true
+gravity = Vector3( 0, 98, 0 )
+initial_velocity = 10.0
+initial_velocity_random = 1.0
+orbit_velocity = 0.0
+orbit_velocity_random = 0.0
+damping = 40.0
+color = Color( 0.133333, 0.12549, 0.203922, 0.529412 )
 
 [sub_resource type="AtlasTexture" id=9]
 atlas = ExtResource( 1 )
@@ -78,6 +99,19 @@ scale = Vector2( 3, 3 )
 frames = SubResource( 8 )
 frame = 2
 playing = true
+
+[node name="Particles2D" type="Particles2D" parent="Sprite/Base"]
+show_behind_parent = true
+position = Vector2( 0.666667, 13.3333 )
+scale = Vector2( 0.333333, 0.333333 )
+lifetime = 0.2
+speed_scale = 0.18
+explosiveness = 0.08
+randomness = 0.08
+fixed_fps = 8
+local_coords = false
+process_material = SubResource( 18 )
+texture = ExtResource( 4 )
 
 [node name="Eyes" type="AnimatedSprite" parent="Sprite"]
 position = Vector2( -2, -60 )
