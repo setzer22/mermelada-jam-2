@@ -30,9 +30,9 @@ public class Grabbable : Node
         parentProp.RemoveChild(Prop);
         grabber.AddChild(Prop);
         Prop.GlobalPosition = globalPos;
-        
+
         // If our parent is a surface, notify it that we just got yoinked
-        if (parentProp is Surface surface)
+        if (parentProp is ItemProp ip && ip.SurfaceComponent() is Surface surface)
         {
             surface.itemOnTop = null;
         }
@@ -68,9 +68,9 @@ public class Grabbable : Node
         var globalPos = Prop.GlobalPosition;
         var parentProp = Prop.GetParent();
         parentProp.RemoveChild(Prop);
-        surface.AddChild(Prop);
+        surface.Prop.AddChild(Prop);
         Prop.GlobalPosition = globalPos;
-        
+
         GD.Print($"Moving from {Prop.Position} to {surface.PlaceItemPos}");
 
         // We start a tween to move the object towards the surface

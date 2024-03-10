@@ -3,7 +3,7 @@ using Godot;
 
 public class Surface : Node
 {
-    ItemProp Prop =>
+    public ItemProp Prop =>
         GetParent() as ItemProp ?? throw new Exception("Component should be child of ItemProp");
 
     public Vector2 PlaceItemPos =>

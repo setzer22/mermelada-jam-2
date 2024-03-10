@@ -117,9 +117,9 @@ public class Player : KinematicBody2D, IGrabber
         elapsed += delta;
 
         // Float animation
-        Sprite.Position =
-            initialSpriteTranslation
-            + Vector2.Up * Mathf.Sin(elapsed * FloatAnimFrequency) * FloatAnimAmplitude;
+        var floatYOffset =
+            Vector2.Up * Mathf.Sin(elapsed * FloatAnimFrequency) * FloatAnimAmplitude;
+        Sprite.Position = initialSpriteTranslation + floatYOffset;
 
         var newOpacity = Opacity + Mathf.Sin(elapsed * OpacityAnimFrequency) * OpacityAnimAmplitude;
         Sprite.Modulate = new Color(1, 1, 1, newOpacity);
@@ -203,7 +203,7 @@ public class Player : KinematicBody2D, IGrabber
         // Grabbed item
         if (this.grabbedObject != null)
         {
-            this.grabbedObject.Prop.Position = HeldObjectPos.Position;
+            this.grabbedObject.Prop.Position = HeldObjectPos.Position + floatYOffset * 0.8f;
         }
 
         // Speaking via text
