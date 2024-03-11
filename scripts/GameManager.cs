@@ -1,7 +1,7 @@
-using Godot;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using Godot;
 
 public class GameManager : Node
 {
@@ -10,7 +10,10 @@ public class GameManager : Node
     const int MAX_ACTIONS = 2;
 
     [Signal]
-    delegate void InkSpent(float amount);
+    delegate void InkSpent(float amountPct);
+
+    [Signal]
+    delegate void TenantDamaged(float amountPct);
 
     [Signal]
     delegate void NewJournalAction(string sentence);
@@ -64,25 +67,8 @@ public class GameManager : Node
 
         GD.Print(sentence);
 
-        if (performedActions.Add(sentence))
-        {
-            int annoyance = LevelLogic.GetAnnoyanceLevel(levelIndex, item, surface);
-            accumulatedAnnoyanceLevel += annoyance;
-
-            EmitSignal(nameof(InkSpent), 1);
-            EmitSignal(nameof(NewJournalAction), sentence);
-            EmitSignal(nameof(UpdateRatings), annoyance);
-
-            GD.PrintErr(accumulatedAnnoyanceLevel);
-            if (performedActions.Count > LevelLogic.GetMaxAnnoyanceLevel(levelIndex))
-            {
-                RestartLevel();
-            }
-            else if (accumulatedAnnoyanceLevel >= LevelLogic.GetMaxAnnoyanceLevel(levelIndex))
-            {
-                GoToNextLevel();
-            }
-        }
+        int annoyance = LevelLogic.GetAnnoyanceLevel(levelIndex, item, surface);
+        HandlePerformedActionLogic(sentence, annoyance);
     }
 
     /// <summary>
@@ -113,25 +99,45 @@ public class GameManager : Node
 
         GD.Print(sentence);
 
+        int annoyance = LevelLogic.GetAnnoyanceLevel(levelIndex, grabbed, switched);
+        HandlePerformedActionLogic(sentence, annoyance);
+    }
+
+    public void HandlePerformedActionLogic(string sentence, int annoyance)
+    {
         if (performedActions.Add(sentence))
         {
-            int annoyance = LevelLogic.GetAnnoyanceLevel(levelIndex, grabbed, switched);
             accumulatedAnnoyanceLevel += annoyance;
 
-            EmitSignal(nameof(InkSpent), 1);
+            var maxAnnoyance = LevelLogic.GetMaxAnnoyanceLevel(levelIndex);
+            var maxInk = LevelLogic.GetMaxInkLevel(levelIndex);
+
+            GD.Print(
+                $"Annoyance: {annoyance}. Max annoyance: {maxAnnoyance}. Accumulated annoyance: {accumulatedAnnoyanceLevel}"
+            );
+
+            EmitSignal(nameof(InkSpent), (1f / (float)maxInk) * 100f);
+            EmitSignal(nameof(TenantDamaged), (annoyance / (float)maxAnnoyance) * 100f);
             EmitSignal(nameof(NewJournalAction), sentence);
             EmitSignal(nameof(UpdateRatings), annoyance);
 
             GD.PrintErr(accumulatedAnnoyanceLevel);
-            if (performedActions.Count > LevelLogic.GetMaxAnnoyanceLevel(levelIndex))
+            if (performedActions.Count > maxAnnoyance)
             {
                 RestartLevel();
             }
             else if (accumulatedAnnoyanceLevel >= LevelLogic.GetMaxAnnoyanceLevel(levelIndex))
             {
-                GoToNextLevel();
+                // We wait so that the screen doesn't show up too fast.
+                WaitAndGoToNextLevel();
             }
         }
+    }
+
+    public async void WaitAndGoToNextLevel()
+    {
+        await ToSignal(GetTree().CreateTimer(2), "timeout");
+        GoToNextLevel();
     }
 
     private readonly HashSet<string> performedActions = new HashSet<string>();
@@ -165,7 +171,7 @@ public class GameManager : Node
     }
 
     public async void LoadLevel(
-       Dictionary<PackedScene, bool> transitionScenes,
+        Dictionary<PackedScene, bool> transitionScenes,
         PackedScene levelScene
     )
     {
@@ -244,7 +250,10 @@ public class GameManager : Node
                     {
                         { GD.Load<PackedScene>("res://scenes/Tenants/PainterIntro.tscn"), true },
                         { GD.Load<PackedScene>("res://scenes/ToRent/2_ToRent.tscn"), false },
-                        {  GD.Load<PackedScene>("res://scenes/Tenants/BlueCollarIntro.tscn"), false },
+                        {
+                            GD.Load<PackedScene>("res://scenes/Tenants/BlueCollarIntro.tscn"),
+                            false
+                        },
                     },
                     levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
                 );
@@ -266,15 +275,16 @@ public class GameManager : Node
                     {
                         { GD.Load<PackedScene>("res://scenes/Tenants/InvestorIntro.tscn"), true },
                         { GD.Load<PackedScene>("res://scenes/ToRent/4_ToRent.tscn"), false },
-                        { GD.Load<PackedScene>("res://scenes/Tenants/GhostHunterIntro.tscn"), false },
+                        {
+                            GD.Load<PackedScene>("res://scenes/Tenants/GhostHunterIntro.tscn"),
+                            false
+                        },
                     },
                     GD.Load<PackedScene>("res://scenes/Main.tscn")
                 );
                 break;
             case 5:
-                LoadEndGame(
-                    GD.Load<PackedScene>("res://scenes/Tenants/GhostHunterIntro.tscn")
-                );
+                LoadEndGame(GD.Load<PackedScene>("res://scenes/Tenants/GhostHunterIntro.tscn"));
                 break;
         }
     }
