@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=2]
+[gd_scene load_steps=15 format=2]
 
 [ext_resource path="res://scenes/GameLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Tenants/Painter.tscn" type="PackedScene" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://scenes/ItemProps/Lamp.tscn" type="PackedScene" id=11]
 [ext_resource path="res://scenes/ItemProps/Phone.tscn" type="PackedScene" id=12]
 [ext_resource path="res://scenes/ItemProps/Pared_Invisible.tscn" type="PackedScene" id=13]
+[ext_resource path="res://scenes/ItemProps/Wallet.tscn" type="PackedScene" id=14]
 
 [node name="Node2D" instance=ExtResource( 1 )]
 
@@ -58,8 +59,11 @@ position = Vector2( -447, 112 )
 [node name="Player" parent="YSort" index="9"]
 position = Vector2( -435, 109 )
 
+[node name="Wallet" parent="YSort" index="10" instance=ExtResource( 14 )]
+position = Vector2( -20, 173 )
+
+[node name="ParedInvisible2" parent="YSort" index="11" instance=ExtResource( 13 )]
+position = Vector2( 595, -304 )
+
 [node name="GUI" parent="Camera2D" index="0"]
 SceneOrder = 2
-
-[node name="ParedInvisible" parent="." index="4" instance=ExtResource( 13 )]
-position = Vector2( 595, -304 )
