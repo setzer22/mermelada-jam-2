@@ -66,6 +66,7 @@ public class GameManager : Node
 
         if (performedActions.Add(sentence))
         {
+            EmitSignal(nameof(InkSpent), 1);
             EmitSignal(nameof(NewJournalAction), sentence);
 
             if (performedActions.Count > MAX_ACTIONS)
@@ -105,6 +106,7 @@ public class GameManager : Node
 
         if (performedActions.Add(sentence))
         {
+            EmitSignal(nameof(InkSpent), 1);
             EmitSignal(nameof(NewJournalAction), sentence);
 
             if (performedActions.Count > MAX_ACTIONS)
