@@ -21,7 +21,7 @@ public static class LevelLogic
                 annoyance = 1;
                 break;
             case 4: // ghost hunter
-                annoyance = 1;
+                annoyance = 0;
                 break;
             default: throw new Exception("Uh oh, I didn't think on that...");
         }
@@ -49,9 +49,26 @@ public static class LevelLogic
                 annoyance = 1;
                 break;
             case 4: // ghost hunter
-                annoyance = 1;
+                annoyance = 0;
                 break;
             default: throw new Exception("Uh oh, I didn't think on that...");
+        }
+
+        return annoyance;
+    }
+
+    public static int GetDayPassedAnnoyanceLevel(int level)
+    {
+        int annoyance;
+
+        switch (level)
+        {
+            case 4: // ghost hunter
+                annoyance = 30;
+                break;
+            default:
+                annoyance = 0;
+                break;
         }
 
         return annoyance;
