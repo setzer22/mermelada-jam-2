@@ -24,7 +24,8 @@ public class Tenant : Node2D
     {
         if (body.IsInGroup("Player"))
         {
-            this.ShowFearBox();
+            // TODO: someday fearbox...
+            //this.ShowFearBox();
         }
     }
 
@@ -32,6 +33,8 @@ public class Tenant : Node2D
     {
         if (body.IsInGroup("Player"))
         {
+            // TODO: someday fearbox...
+            //this.ShowFearBox();
             this.HideFearBox();
         }
     }
