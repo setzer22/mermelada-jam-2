@@ -63,9 +63,11 @@ position = Vector2( -423, 167 )
 position = Vector2( -1362, -289 )
 
 [node name="GUI" parent="Camera2D" index="0"]
+MAX_TIMER = 30
 SceneOrder = 5
 
 [node name="DayTrigger" type="Node" parent="." index="4"]
 script = ExtResource( 3 )
 
+[connection signal="start_day" from="Camera2D/GUI" to="DayTrigger" method="_on_GUI_start_day"]
 [connection signal="start_night" from="Camera2D/GUI" to="DayTrigger" method="_on_GUI_start_night"]

@@ -251,6 +251,8 @@ public class Player : KinematicBody2D, IGrabber
                 {
                     this.grabbedObject.Prop.QueueFree();
                     this.grabbedObject = null;
+                    
+                    this.Say("Jejeje...");
                 }
 
                 handled = true;

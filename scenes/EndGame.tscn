@@ -57,10 +57,10 @@ Team:
 kunsto.itch.io - GUI & dev
 @aniol - VFX, sounds, dev
 
-Credits:
-Mojang (font)
-Orange Juice 2.0 (font)
-Sr.Toasty & Narik (asset packs)"
+Asset credits:
+
+  (See itch.io page for
+  asset credits)"
 autowrap = true
 
 [node name="EndStory" type="Label" parent="."]

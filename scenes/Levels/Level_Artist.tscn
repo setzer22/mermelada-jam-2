@@ -50,19 +50,19 @@ position = Vector2( -611, 181 )
 [node name="ParedInvisible" parent="YSort" index="7" instance=ExtResource( 13 )]
 position = Vector2( -1267, -288 )
 
-[node name="Plug" parent="YSort" index="8" instance=ExtResource( 8 )]
+[node name="Lamp" parent="YSort" index="8" instance=ExtResource( 11 )]
+position = Vector2( -266, 186 )
+
+[node name="Plug" parent="YSort" index="9" instance=ExtResource( 8 )]
 position = Vector2( 181, 74 )
 
-[node name="Lamp" parent="YSort/Plug" index="5" instance=ExtResource( 11 )]
-position = Vector2( -447, 112 )
-
-[node name="Player" parent="YSort" index="9"]
+[node name="Player" parent="YSort" index="10"]
 position = Vector2( -435, 109 )
 
-[node name="Wallet" parent="YSort" index="10" instance=ExtResource( 14 )]
+[node name="Wallet" parent="YSort" index="11" instance=ExtResource( 14 )]
 position = Vector2( -20, 173 )
 
-[node name="ParedInvisible2" parent="YSort" index="11" instance=ExtResource( 13 )]
+[node name="ParedInvisible2" parent="YSort" index="12" instance=ExtResource( 13 )]
 position = Vector2( 595, -304 )
 
 [node name="GUI" parent="Camera2D" index="0"]
