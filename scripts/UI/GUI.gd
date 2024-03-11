@@ -67,21 +67,6 @@ func _input(event):
 		houseRatingLabel.visible = !houseRatingLabel.visible
 	if event is InputEventKey and event.scancode == KEY_F and event.pressed:
 		journal.visible = !journal.visible
-	if event is InputEventKey and event.scancode == KEY_L and event.pressed:
-		if inkProgressBar.value >=0:
-			inkProgressBar.value -= INK_PER_SHOOT
-		else:
-			inkProgressBar.value = 0
-			# PONER UN AVISO DE QUE NO TE QUEDA TINTA
-	if event is InputEventKey and event.scancode == KEY_I and event.pressed:
-		var index = 0
-		for star in startsButton.get_children():
-			print(star.texture)
-			star.texture = starEmptySprite
-		for rating in houseRatingVBoxContainer.get_children():
-			rating.text = BAD_RATING_STRINGS[index]
-			index += 1
-			rating.add_color_override("font_color", Color(BAD_COLOR_RATING))
 
 func _on_ink_spent(amountPct):
 	inkProgressBar.value -= amountPct
