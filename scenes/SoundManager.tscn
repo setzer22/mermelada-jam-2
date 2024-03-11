@@ -11,12 +11,15 @@ script = ExtResource( 3 )
 
 [node name="AmbientDay" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 2 )
+volume_db = -3.0
 
 [node name="AmbientNight" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 1 )
+volume_db = -3.0
 
 [node name="AmbientOffice" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 5 )
+volume_db = -10.0
 
 [node name="AmbientMenu" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 4 )
