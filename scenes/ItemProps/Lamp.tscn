@@ -34,6 +34,7 @@ polygon = PoolVector2Array( -19, -7, -36, 0, -40, 9, -27, 15, -2, 18, 23, 15, 40
 
 [node name="Switchable" type="Node" parent="." index="3"]
 script = ExtResource( 5 )
+Key = "lamp"
 
 [node name="OnOff" type="Node" parent="." index="4"]
 script = ExtResource( 6 )
