@@ -13,12 +13,11 @@ text = "Alquileres"
 text = "piso destacado:"
 
 [node name="HouseRating" parent="Tenant" index="0" instance=ExtResource( 2 )]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -165.0
+margin_left = -146.0
 margin_top = -259.0
-margin_right = 154.0
+margin_right = 136.0
 margin_bottom = 91.0
+NumBadRatings = 2
 
 [node name="EvictedLabel" parent="." index="4"]
 text = ""
