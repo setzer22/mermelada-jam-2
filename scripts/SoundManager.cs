@@ -14,6 +14,7 @@ public class SoundManager : Node
     // SFX nodes
     AudioStreamPlayer Hover => _hover ??= GetNode<AudioStreamPlayer>("SFXHover"); AudioStreamPlayer _hover;
     AudioStreamPlayer Select => _select ??= GetNode<AudioStreamPlayer>("SFXSelect"); AudioStreamPlayer _select;
+    AudioStreamPlayer Scream => _scream ??= GetNode<AudioStreamPlayer>("SFXScream"); AudioStreamPlayer _scream;
 
     public override void _Ready()
     {
@@ -57,6 +58,7 @@ public class SoundManager : Node
         {
             SFXSoundType.Hover => Hover,
             SFXSoundType.Select => Select,
+            SFXSoundType.Scream => Scream,
             _ => Hover,
         };
 
