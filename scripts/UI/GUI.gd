@@ -82,7 +82,7 @@ func _input(event):
 func _on_ink_spent(amount):
 	inkProgressBar.value -= amount
 	print("spent some ink")
-	$Panel/TenantCubeUI/TenantCubeUI.play("doDmg")
+	$Panel/TenantCubeUI/CubeAnimation.play("goDmg")
 
 func _on_new_journal_action(sentence):
 	journal.get_node("ActionsText").text += "\n - " + sentence;
