@@ -35,4 +35,4 @@ script = ExtResource( 5 )
 Key = "wardrobe"
 
 [node name="PlaceItemPos" type="Position2D" parent="." index="4"]
-position = Vector2( -48, -387 )
+position = Vector2( -53, -386 )
