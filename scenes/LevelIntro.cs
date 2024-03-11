@@ -11,6 +11,27 @@ public class LevelIntro : Control
 
     [Export]
     public bool IsOutro = false;
+    
+    [Export]
+    public float TitleSteps = 10;
+
+    [Export]
+    public float TitleDurationSecs = 1f;
+
+    [Export]
+    public float SubtitleSteps = 10;
+
+    [Export]
+    public float SubtitleDurationSecs = 1f;
+    
+    [Export]
+    public float EvictedSteps = 10;
+    
+    [Export]
+    public float EvictedDurationSecs = 2f;
+    
+    [Export]
+    public float EndWait = 2f;
 
     // Called when the node enters the scene tree for the first time.
     public override void _Ready()
@@ -59,23 +80,19 @@ public class LevelIntro : Control
         await ToSignal(tw, "tween_completed");
 
         // Animate title
-        var titleSteps = 10;
-        var titleDurationSecs = 1f;
-        for (int i = 0; i < 10; ++i)
+        for (int i = 0; i < TitleSteps; ++i)
         {
-            title.PercentVisible += 1f / titleSteps;
-            await ToSignal(GetTree().CreateTimer(titleDurationSecs / titleSteps), "timeout");
+            title.PercentVisible += 1f / TitleSteps;
+            await ToSignal(GetTree().CreateTimer(TitleDurationSecs / TitleSteps), "timeout");
         }
 
         await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
 
         // Animate subtitle
-        var subtitleSteps = 10;
-        var subtitleDurationSecs = 1f;
-        for (int i = 0; i < 10; ++i)
+        for (int i = 0; i < SubtitleSteps; ++i)
         {
-            subtitle.PercentVisible += 1f / subtitleSteps;
-            await ToSignal(GetTree().CreateTimer(subtitleDurationSecs / subtitleSteps), "timeout");
+            subtitle.PercentVisible += 1f / SubtitleSteps;
+            await ToSignal(GetTree().CreateTimer(SubtitleDurationSecs / SubtitleSteps), "timeout");
         }
 
         await ToSignal(GetTree().CreateTimer(0.5f), "timeout");
@@ -83,19 +100,17 @@ public class LevelIntro : Control
         if (IsOutro)
         {
             // Animate evicted label
-            var evictedSteps = 10;
-            var evictedDurationSecs = 2f;
-            for (int i = 0; i < 10; ++i)
+            for (int i = 0; i < EvictedSteps; ++i)
             {
-                evictedLabel.PercentVisible += 1f / evictedSteps;
+                evictedLabel.PercentVisible += 1f / EvictedSteps;
                 await ToSignal(
-                    GetTree().CreateTimer(evictedDurationSecs / evictedSteps),
+                    GetTree().CreateTimer(EvictedDurationSecs / EvictedSteps),
                     "timeout"
                 );
             }
         }
 
-        await ToSignal(GetTree().CreateTimer(2f, false), "timeout");
+        await ToSignal(GetTree().CreateTimer(EndWait, false), "timeout");
 
         var tw2 = new Tween();
         AddChild(tw2);
