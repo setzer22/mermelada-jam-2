@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=24 format=2]
 
 [ext_resource path="res://resources/fonts/orange juice 2.0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://resources/sprites/UI/Star_Full2.png" type="Texture" id=2]
@@ -9,11 +9,13 @@
 [ext_resource path="res://resources/sprites/UI/clock_background.png" type="Texture" id=7]
 [ext_resource path="res://scripts/UI/GUI.gd" type="Script" id=8]
 [ext_resource path="res://resources/sprites/UI/clock_progress.png" type="Texture" id=9]
+[ext_resource path="res://resources/sprites/UI/tenants_UI/cube_posh.png" type="Texture" id=10]
 [ext_resource path="res://resources/sprites/UI/Pen.png" type="Texture" id=11]
 [ext_resource path="res://resources/sprites/UI/journal2.png" type="Texture" id=12]
 [ext_resource path="res://resources/sprites/UI/stars_button2.png" type="Texture" id=13]
 [ext_resource path="res://resources/sprites/UI/RatingBook.png" type="Texture" id=14]
 [ext_resource path="res://resources/fonts/Texts_Font.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://resources/sprites/UI/tenants_UI/tenant_cube.png" type="Texture" id=16]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 0.764706, 0.588235, 0 )
@@ -43,6 +45,12 @@ tracks/0/keys = {
 "values": [ 0.0, 5.0, -5.0, 3.0, 1.0, 0.0 ]
 }
 
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.647059, 0.470588, 0.333333, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.831373, 0.776471, 0.572549, 1 )
+
 [node name="GUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -56,9 +64,9 @@ custom_styles/panel = SubResource( 1 )
 [node name="PenTexture" type="TextureRect" parent="Panel"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -119.0
+margin_left = -165.0
 margin_top = 16.0
-margin_right = 257.0
+margin_right = 211.0
 margin_bottom = 88.0
 texture = ExtResource( 11 )
 expand = true
@@ -117,10 +125,12 @@ margin_left = -140.0
 margin_top = 1.0
 margin_right = -28.0
 margin_bottom = 111.0
+rect_pivot_offset = Vector2( -14, 20 )
 texture = ExtResource( 4 )
 expand = true
 
 [node name="ClockProgress" type="TextureProgress" parent="Panel"]
+visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -106.0
@@ -283,6 +293,37 @@ text = "- El objeto X ha sido movido hacia Y
 - Aasdasdasd"
 valign = 1
 autowrap = true
+
+[node name="TenantCubeUI" type="TextureRect" parent="Panel"]
+anchor_left = 1.0
+anchor_right = 1.0
+margin_left = -273.0
+margin_top = 8.0
+margin_right = -171.0
+margin_bottom = 108.0
+rect_pivot_offset = Vector2( -14, 20 )
+texture = ExtResource( 16 )
+expand = true
+
+[node name="TenantTexture" type="TextureRect" parent="Panel/TenantCubeUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 11.0
+margin_right = -53.0
+margin_bottom = -41.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 10 )
+
+[node name="TenantLifeBar" type="ProgressBar" parent="Panel/TenantCubeUI"]
+margin_left = 14.0
+margin_top = 13.0
+margin_right = 87.0
+margin_bottom = 27.0
+custom_colors/font_color = Color( 0.167832, 0.123211, 0.0885051, 1 )
+custom_styles/fg = SubResource( 6 )
+custom_styles/bg = SubResource( 7 )
+value = 50.0
 
 [connection signal="pressed" from="Panel/StarsButton" to="." method="_on_StarsButton_pressed"]
 [connection signal="timeout" from="Panel/ClockProgress/Timer" to="." method="_on_Timer_timeout"]
