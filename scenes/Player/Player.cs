@@ -207,7 +207,7 @@ public class Player : KinematicBody2D, IGrabber
 
         if (Input.IsActionJustPressed("Interact"))
         {
-            if (!handled && selected.GrabbableComponent() is Grabbable g)
+            if (grabbedObject == null && !handled && selected.GrabbableComponent() is Grabbable g)
             {
                 g.Grab(this, HeldObjectPos.Position);
                 handled = true;
