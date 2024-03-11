@@ -125,7 +125,8 @@ public class GameManager : Node
             EmitSignal(nameof(InkSpent), (1f / (float)maxInk) * 100f);
             EmitSignal(nameof(TenantDamaged), (annoyance / (float)maxAnnoyance) * 100f);
             EmitSignal(nameof(NewJournalAction), sentence);
-            EmitSignal(nameof(UpdateRatings), annoyance);
+            // Commented for don't override rattings on change objects
+            //EmitSignal(nameof(UpdateRatings), annoyance);
 
             GD.PrintErr(accumulatedAnnoyanceLevel);
             if (performedActions.Count > maxAnnoyance)
@@ -239,7 +240,7 @@ public class GameManager : Node
                         { GD.Load<PackedScene>("res://scenes/ToRent/0_ToRent.tscn"), false },
                         { GD.Load<PackedScene>("res://scenes/Tenants/PoshIntro.tscn"), false },
                     },
-                    levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
+                    levelScene: GD.Load<PackedScene>("res://scenes/Levels/Level_Posh.tscn")
                 );
                 break;
             case 1:
@@ -250,7 +251,7 @@ public class GameManager : Node
                         { GD.Load<PackedScene>("res://scenes/ToRent/1_ToRent.tscn"), false },
                         { GD.Load<PackedScene>("res://scenes/Tenants/PainterIntro.tscn"), false },
                     },
-                    levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
+                    levelScene: GD.Load<PackedScene>("res://scenes/Levels/Level_Artist.tscn")
                 );
                 break;
             case 2:
@@ -264,7 +265,7 @@ public class GameManager : Node
                             false
                         },
                     },
-                    levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
+                    levelScene: GD.Load<PackedScene>("res://scenes/Levels/Level_Worker.tscn")
                 );
                 break;
             case 3:
@@ -275,7 +276,7 @@ public class GameManager : Node
                         { GD.Load<PackedScene>("res://scenes/ToRent/3_ToRent.tscn"), false },
                         { GD.Load<PackedScene>("res://scenes/Tenants/InvestorIntro.tscn"), false },
                     },
-                    levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
+                    levelScene: GD.Load<PackedScene>("res://scenes/Levels/Level_Investor.tscn")
                 );
                 break;
             case 4:
@@ -289,7 +290,7 @@ public class GameManager : Node
                             false
                         },
                     },
-                    GD.Load<PackedScene>("res://scenes/Main.tscn")
+                    GD.Load<PackedScene>("res://scenes/Levels/Level_Ghosthunter.tscn")
                 );
                 break;
             case 5:
