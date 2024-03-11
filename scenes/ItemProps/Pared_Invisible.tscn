@@ -12,7 +12,7 @@ shader_param/pattern = 2
 shader_param/inside = false
 shader_param/add_margins = true
 
-[node name="ItemProp" instance=ExtResource( 2 )]
+[node name="ParedInvisible" instance=ExtResource( 2 )]
 
 [node name="Shade" parent="." index="0"]
 visible = false
