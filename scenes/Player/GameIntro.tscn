@@ -5,16 +5,26 @@
 
 [node name="LevelIntro" instance=ExtResource( 1 )]
 OutroText = "Tampoco es que la zona fuese tan buena, no tienen ni bubbletea."
+SubtitleSteps = 60.0
+SubtitleDurationSecs = 8.0
+EndWait = 3.0
 
 [node name="Title" parent="." index="1"]
 text = "El que pactó con el diablo"
 
 [node name="Subtitle" parent="." index="2"]
-text = "Vendió su alma al diablo para escribir su mejor novela. Pero también la sacrificicó a cambio de una hipoteca para su pisito ideal. Mientras diablo y banco se pelean, su alma en pena disfruta del piso con paz eterna.
+text = "Vendió su alma al diablo para escribir su mejor novela. Pero también la sacrificicó a cambio de una hipoteca para su pisito ideal. 
+
+Mientras diablo y banco se pelean, su alma en pena disfruta del piso con paz eterna.
 
 O eso se pensaba..."
 
 [node name="Player" parent="Tenant" index="0" instance=ExtResource( 2 )]
+position = Vector2( 0, 67 )
 
 [node name="EvictedLabel" parent="." index="4"]
+margin_left = -1.0
+margin_top = 362.0
+margin_right = -1.0
+margin_bottom = 461.0
 text = ""
