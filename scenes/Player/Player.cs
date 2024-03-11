@@ -239,7 +239,7 @@ public class Player : KinematicBody2D, IGrabber
 
             if (!handled && selected.SwitchableComponent() is Switchable sw)
             {
-                sw.Switch();
+                sw.Switch(this.grabbedObject?.Key);
 
                 GameManager.Singleton.SwitchedItemAction(sw, this.grabbedObject);
 
