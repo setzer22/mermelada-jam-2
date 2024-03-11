@@ -42,13 +42,12 @@ func _on_button_up():
 	$RichTextLabel.add_color_override("default_color",Color.white)
 	
 func on_pressed():
-	get_node("%SelectSound").play()
-	yield (get_node("%SelectSound"), "finished")
+	get_node("/root/SoundManager").PlayOneShot("Select")
 	emit_signal("onClick")
 
 func _on_TextureButton_focus_entered():
 	show_arrows()
-	get_node("%HoverSound").play()
+	get_node("/root/SoundManager").PlayOneShot("Hover")
 
 func _on_TextureButton_focus_exited():
 	hide_arrows()
