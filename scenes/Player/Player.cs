@@ -286,7 +286,28 @@ public class Player : KinematicBody2D, IGrabber
 
     public override void _PhysicsProcess(float delta)
     {
-        var movement = Input.GetVector("MoveLeft", "MoveRight", "MoveUp", "MoveDown");
+        //var movement = Input.GetVector("MoveLeft", "MoveRight", "MoveUp", "MoveDown");
+        // Use the old crappier way because Input.GetVector is bugged on HTML exports??
+        var movement = new Vector2();
+        if (Input.IsActionPressed("MoveLeft"))
+        {
+            movement.x -= 1f;
+        }
+        if (Input.IsActionPressed("MoveRight"))
+        {
+            movement.x += 1f;
+        }
+        if (Input.IsActionPressed("MoveUp"))
+        {
+            movement.y -= 1f;
+        }
+        if (Input.IsActionPressed("MoveDown"))
+        {
+            movement.y += 1f;
+        }
+
+        
+
         velocity = movement.Normalized() * MoveSpeed;
         velocity = MoveAndSlide(velocity);
     }
