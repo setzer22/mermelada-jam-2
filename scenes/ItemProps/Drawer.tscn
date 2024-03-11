@@ -36,4 +36,4 @@ script = ExtResource( 5 )
 Key = "drawer"
 
 [node name="PlaceItemPos" type="Position2D" parent="." index="4"]
-position = Vector2( 3, -131 )
+position = Vector2( -17, -250 )
