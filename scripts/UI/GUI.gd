@@ -10,19 +10,29 @@ var MAX_TIMER = 60
 var INK_PER_SHOOT = 20
 var houseRatingLabel
 var houseRatingVBoxContainer
+var tenantTexture
 var BAD_RATING_STRINGS = [
-	"Las energias son\nun poco turbias\n",
+	"Las energías son\nun poco turbias\n",
 	"Las cosas no se quedan\ndonde las dejas\n",
 	"La electricidad falla\nmucho sin motivo\n",
 	"Los muebles hacen ruidos\ny se abren solos\n",
-	"Decian que habia\n fantasmas pero era\nmentira"
+	"Decían que habia\n fantasmas pero era\nmentira"
 ]
-var BAD_COLOR_RATING = "7a0d0d"
+var BAD_COLOR_RATING = "a71212"
 var journal
 var inkProgressBar
 var startsButton
 
+export var SceneOrder : int
+
+
 var starEmptySprite = preload("res://resources/sprites/UI/Star_Empty2.png")
+
+var poshUIportrait = preload("res://resources/sprites/UI/tenants_UI/cube_posh.png")
+var cube_artistUIportrait = preload("res://resources/sprites/UI/tenants_UI/cube_artist.png")
+var cube_bluecollarUIportrait = preload("res://resources/sprites/UI/tenants_UI/cube_bluecollar.png")
+var investorUIportrait = preload("res://resources/sprites/UI/tenants_UI/cube_investor.png")
+var cube_ghosthunterUIportrait = preload("res://resources/sprites/UI/tenants_UI/cube_ghosthunter.png")
 
 func _ready():
 	$Panel/ClockProgress.set_value(0.0)
@@ -35,6 +45,46 @@ func _ready():
 	inkProgressBar = $Panel/PenTexture/InkProgressBar
 	startsButton = $Panel/StarsButton
 	$Panel/DayNightFilter.visible = false
+	tenantTexture = $Panel/TenantCubeUI/TenantTexture
+
+	# TODO: Refactor tthis troll code :_(
+	match SceneOrder:
+		1:
+			tenantTexture.texture = poshUIportrait
+		2:
+			tenantTexture.texture = cube_artistUIportrait
+			startsButton.get_child(4).texture = starEmptySprite
+			for i in range(0, 1):
+				var rating = houseRatingVBoxContainer.get_child(i)
+				rating.text = BAD_RATING_STRINGS[i]
+				rating.add_color_override("font_color", Color(BAD_COLOR_RATING))
+		3:
+			tenantTexture.texture = cube_bluecollarUIportrait
+			startsButton.get_child(4).texture = starEmptySprite
+			startsButton.get_child(3).texture = starEmptySprite
+			for i in range(0, 2):
+				var rating = houseRatingVBoxContainer.get_child(i)
+				rating.text = BAD_RATING_STRINGS[i]
+				rating.add_color_override("font_color", Color(BAD_COLOR_RATING))
+		4:
+			tenantTexture.texture = investorUIportrait
+			startsButton.get_child(4).texture = starEmptySprite
+			startsButton.get_child(3).texture = starEmptySprite
+			startsButton.get_child(2).texture = starEmptySprite
+			for i in range(0, 3):
+				var rating = houseRatingVBoxContainer.get_child(i)
+				rating.text = BAD_RATING_STRINGS[i]
+				rating.add_color_override("font_color", Color(BAD_COLOR_RATING))
+		5:
+			tenantTexture.texture = cube_ghosthunterUIportrait
+			startsButton.get_child(4).texture = starEmptySprite
+			startsButton.get_child(3).texture = starEmptySprite
+			startsButton.get_child(2).texture = starEmptySprite
+			startsButton.get_child(1).texture = starEmptySprite
+			for i in range(0, 4):
+				var rating = houseRatingVBoxContainer.get_child(i)
+				rating.text = BAD_RATING_STRINGS[i]
+				rating.add_color_override("font_color", Color(BAD_COLOR_RATING))
 	
 	GameManager.connect("InkSpent", self, "_on_ink_spent");
 	GameManager.connect("TenantDamaged", self, "_on_tenant_damaged");
