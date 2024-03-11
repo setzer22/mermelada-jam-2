@@ -1,0 +1,35 @@
+[remap]
+
+importer="texture"
+type="StreamTexture"
+path="res://.import/W_normal.png-aab2b60b27371c7c413a9f4ffdf361dd.stex"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://resources/sprites/UI/Keys/W_normal.png"
+dest_files=[ "res://.import/W_normal.png-aab2b60b27371c7c413a9f4ffdf361dd.stex" ]
+
+[params]
+
+compress/mode=0
+compress/lossy_quality=0.7
+compress/hdr_mode=0
+compress/bptc_ldr=0
+compress/normal_map=0
+flags/repeat=0
+flags/filter=false
+flags/mipmaps=false
+flags/anisotropic=false
+flags/srgb=2
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/HDR_as_SRGB=false
+process/invert_color=false
+process/normal_map_invert_y=false
+stream=false
+size_limit=0
+detect_3d=false
+svg/scale=1.0

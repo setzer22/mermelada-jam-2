@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=21 format=2]
 
 [ext_resource path="res://resources/fonts/orange juice 2.0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/MenuButton.tscn" type="PackedScene" id=2]
@@ -8,10 +8,23 @@
 [ext_resource path="res://resources/audio/sfx/button-hover.wav" type="AudioStream" id=6]
 [ext_resource path="res://resources/audio/sfx/button-select.wav" type="AudioStream" id=7]
 [ext_resource path="res://assets/background_living_room.png" type="Texture" id=8]
+[ext_resource path="res://resources/sprites/UI/fear_box.png" type="Texture" id=9]
+[ext_resource path="res://resources/fonts/Mojang-Regular.ttf" type="DynamicFontData" id=10]
+[ext_resource path="res://resources/sprites/UI/Keys/D_normal.png" type="Texture" id=11]
+[ext_resource path="res://resources/sprites/UI/Keys/E_normal.png" type="Texture" id=12]
+[ext_resource path="res://resources/sprites/UI/Keys/S_normal.png" type="Texture" id=13]
+[ext_resource path="res://resources/sprites/UI/Keys/W_normal.png" type="Texture" id=14]
+[ext_resource path="res://resources/sprites/UI/Keys/TAB_normal.png" type="Texture" id=15]
+[ext_resource path="res://resources/sprites/UI/Keys/A_normal.png" type="Texture" id=16]
+[ext_resource path="res://resources/sprites/UI/Keys/F_normal.png" type="Texture" id=17]
+[ext_resource path="res://resources/sprites/UI/Keys/R_normal.png" type="Texture" id=18]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
 font_data = ExtResource( 1 )
+
+[sub_resource type="DynamicFont" id=2]
+font_data = ExtResource( 10 )
 
 [node name="MainMenu" type="Node2D"]
 script = ExtResource( 3 )
@@ -33,7 +46,6 @@ margin_right = 1024.0
 margin_bottom = 600.0
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
-margin_top = 50.0
 margin_right = 1024.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 0, 300 )
@@ -94,3 +106,150 @@ volume_db = -19.227
 unique_name_in_owner = true
 stream = ExtResource( 7 )
 volume_db = -29.713
+
+[node name="OptionsMenu" type="TextureRect" parent="."]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 256.0
+margin_top = 112.0
+margin_right = 320.0
+margin_bottom = 160.0
+rect_scale = Vector2( 8, 8 )
+texture = ExtResource( 9 )
+
+[node name="Intro" type="Label" parent="OptionsMenu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -13.0
+margin_top = 8.0
+margin_right = 91.0
+margin_bottom = 24.0
+rect_scale = Vector2( 0.25, 0.25 )
+custom_colors/font_color = Color( 0.25098, 0.321569, 0.45098, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "CONTROLS"
+
+[node name="Move" type="Label" parent="OptionsMenu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -9.0
+margin_top = 18.0
+margin_right = 65.0
+margin_bottom = 34.0
+rect_scale = Vector2( 0.15, 0.15 )
+custom_colors/font_color = Color( 0.423529, 0.505882, 0.631373, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "-   Move"
+
+[node name="SwitchObjects" type="Label" parent="OptionsMenu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -9.0
+margin_top = 38.0
+margin_right = 117.0
+margin_bottom = 54.0
+rect_scale = Vector2( 0.15, 0.15 )
+custom_colors/font_color = Color( 0.423529, 0.505882, 0.631373, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "-   Swtich btw Objects"
+
+[node name="Journal" type="Label" parent="OptionsMenu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -9.0
+margin_top = 32.875
+margin_right = 117.0
+margin_bottom = 48.875
+rect_scale = Vector2( 0.15, 0.15 )
+custom_colors/font_color = Color( 0.423529, 0.505882, 0.631373, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "-   Show / Hide Journal"
+
+[node name="HouseRating" type="Label" parent="OptionsMenu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -9.0
+margin_top = 28.0
+margin_right = 265.0
+margin_bottom = 63.0
+rect_scale = Vector2( 0.15, 0.15 )
+custom_colors/font_color = Color( 0.423529, 0.505882, 0.631373, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "-   Show / Hide  Rating"
+
+[node name="Interact" type="Label" parent="OptionsMenu"]
+anchor_left = 0.5
+anchor_right = 0.5
+margin_left = -9.0
+margin_top = 23.0
+margin_right = 117.0
+margin_bottom = 39.0
+rect_scale = Vector2( 0.15, 0.15 )
+custom_colors/font_color = Color( 0.423529, 0.505882, 0.631373, 1 )
+custom_fonts/font = SubResource( 2 )
+text = "-   Interact"
+
+[node name="W" type="TextureRect" parent="OptionsMenu"]
+margin_left = 11.875
+margin_top = 14.0
+margin_right = 24.875
+margin_bottom = 26.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 14 )
+
+[node name="A" type="TextureRect" parent="OptionsMenu"]
+margin_left = 8.0
+margin_top = 18.0
+margin_right = 21.0
+margin_bottom = 30.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 16 )
+
+[node name="S" type="TextureRect" parent="OptionsMenu"]
+margin_left = 12.0
+margin_top = 18.0
+margin_right = 25.0
+margin_bottom = 30.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 13 )
+
+[node name="D" type="TextureRect" parent="OptionsMenu"]
+margin_left = 16.125
+margin_top = 18.0
+margin_right = 29.125
+margin_bottom = 30.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 11 )
+
+[node name="E" type="TextureRect" parent="OptionsMenu"]
+margin_left = 12.0
+margin_top = 23.5
+margin_right = 25.0
+margin_bottom = 35.5
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 12 )
+
+[node name="R" type="TextureRect" parent="OptionsMenu"]
+margin_left = 12.0
+margin_top = 28.0
+margin_right = 25.0
+margin_bottom = 40.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 18 )
+
+[node name="F" type="TextureRect" parent="OptionsMenu"]
+margin_left = 12.0
+margin_top = 33.0
+margin_right = 25.0
+margin_bottom = 45.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 17 )
+
+[node name="TAB" type="TextureRect" parent="OptionsMenu"]
+margin_left = 12.0
+margin_top = 38.0
+margin_right = 25.0
+margin_bottom = 50.0
+rect_scale = Vector2( 0.3, 0.3 )
+texture = ExtResource( 15 )
