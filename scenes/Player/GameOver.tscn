@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/LevelIntro.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Player/Player.tscn" type="PackedScene" id=2]
+
+[node name="LevelIntro" instance=ExtResource( 1 )]
+OutroText = "Sobre sus acciones corrieron ríos de tinta. Pero no consiguió quedarse donde quería."
+
+[node name="Title" parent="." index="1"]
+text = "La dura derrota"
+
+[node name="Subtitle" parent="." index="2"]
+text = "Sobre sus acciones corrieron ríos de tinta. Pero no consiguió quedarse donde quería."
+
+[node name="Player" parent="Tenant" index="0" instance=ExtResource( 2 )]
+
+[node name="EvictedLabel" parent="." index="4"]
+margin_top = 384.0
+margin_bottom = 483.0
+text = "DESHAUCIADO
+PARA SIEMPRE"

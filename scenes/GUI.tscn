@@ -9,11 +9,11 @@
 [ext_resource path="res://resources/sprites/UI/clock_background.png" type="Texture" id=7]
 [ext_resource path="res://scripts/UI/GUI.gd" type="Script" id=8]
 [ext_resource path="res://resources/sprites/UI/clock_progress.png" type="Texture" id=9]
-[ext_resource path="res://resources/sprites/UI/tenants_UI/cube_posh.png" type="Texture" id=10]
+[ext_resource path="res://scenes/HouseRating.tscn" type="PackedScene" id=10]
 [ext_resource path="res://resources/sprites/UI/Pen.png" type="Texture" id=11]
 [ext_resource path="res://resources/sprites/UI/journal2.png" type="Texture" id=12]
 [ext_resource path="res://resources/sprites/UI/stars_button2.png" type="Texture" id=13]
-[ext_resource path="res://resources/sprites/UI/RatingBook.png" type="Texture" id=14]
+[ext_resource path="res://resources/sprites/UI/tenants_UI/cube_posh.png" type="Texture" id=14]
 [ext_resource path="res://resources/fonts/Mojang-Regular.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://resources/sprites/UI/tenants_UI/tenant_cube.png" type="Texture" id=16]
 
@@ -24,12 +24,12 @@ bg_color = Color( 1, 0.764706, 0.588235, 0 )
 size = 42
 font_data = ExtResource( 1 )
 
+[sub_resource type="CanvasItemMaterial" id=3]
+blend_mode = 1
+
 [sub_resource type="DynamicFont" id=4]
 size = 15
 font_data = ExtResource( 15 )
-
-[sub_resource type="CanvasItemMaterial" id=3]
-blend_mode = 1
 
 [sub_resource type="Animation" id=5]
 resource_name = "Wiggle"
@@ -250,77 +250,7 @@ margin_right = 49.0
 margin_bottom = 85.0
 color = Color( 0, 0, 0, 0.0980392 )
 
-[node name="HouseRating" type="TextureRect" parent="Panel"]
-anchor_top = 0.5
-anchor_bottom = 0.5
-margin_left = 9.0
-margin_top = -200.0
-margin_right = 307.0
-margin_bottom = 150.0
-texture = ExtResource( 14 )
-expand = true
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Panel/HouseRating"]
-anchor_left = 0.5
-anchor_right = 0.5
-margin_left = -91.0
-margin_top = 35.0
-margin_right = 139.0
-margin_bottom = 321.0
-
-[node name="RatingText" type="Label" parent="Panel/HouseRating/VBoxContainer"]
-margin_right = 230.0
-margin_bottom = 54.0
-custom_colors/font_color = Color( 0.27451, 0.478431, 0.0509804, 1 )
-custom_fonts/font = SubResource( 4 )
-text = "Lujoso atico en el 
-centro
-"
-align = 1
-
-[node name="RatingText2" type="Label" parent="Panel/HouseRating/VBoxContainer"]
-margin_top = 58.0
-margin_right = 230.0
-margin_bottom = 112.0
-custom_colors/font_color = Color( 0.27451, 0.478431, 0.0509804, 1 )
-custom_fonts/font = SubResource( 4 )
-text = "Luminoso, con grandes
-ventanas panoramicas
-"
-align = 1
-
-[node name="RatingText3" type="Label" parent="Panel/HouseRating/VBoxContainer"]
-margin_top = 116.0
-margin_right = 230.0
-margin_bottom = 170.0
-custom_colors/font_color = Color( 0.27451, 0.478431, 0.0509804, 1 )
-custom_fonts/font = SubResource( 4 )
-text = "Vivienda urbana moderna,
-recientemente reformada
-"
-align = 1
-
-[node name="RatingText4" type="Label" parent="Panel/HouseRating/VBoxContainer"]
-margin_top = 174.0
-margin_right = 230.0
-margin_bottom = 228.0
-custom_colors/font_color = Color( 0.27451, 0.478431, 0.0509804, 1 )
-custom_fonts/font = SubResource( 4 )
-text = "A poca distancia a pie
-de tiendas y servicios
-"
-align = 1
-
-[node name="RatingText5" type="Label" parent="Panel/HouseRating/VBoxContainer"]
-margin_top = 232.0
-margin_right = 230.0
-margin_bottom = 286.0
-custom_colors/font_color = Color( 0.27451, 0.478431, 0.0509804, 1 )
-custom_fonts/font = SubResource( 4 )
-text = "Amueblado, listo para
-entrar a vivir
-"
-align = 1
+[node name="HouseRating" parent="Panel" instance=ExtResource( 10 )]
 
 [node name="JournalText" type="ColorRect" parent="Panel"]
 anchor_left = 1.0
@@ -395,7 +325,7 @@ margin_top = 11.0
 margin_right = -53.0
 margin_bottom = -40.0
 rect_scale = Vector2( 2, 2 )
-texture = ExtResource( 10 )
+texture = ExtResource( 14 )
 
 [node name="TenantLifeBar" type="ProgressBar" parent="Panel/TenantCubeUI"]
 margin_left = 14.0

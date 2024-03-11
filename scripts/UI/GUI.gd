@@ -81,6 +81,7 @@ func _input(event):
 
 func _on_ink_spent(amount):
 	inkProgressBar.value -= amount
+	print("spent some ink")
 	$Panel/TenantCubeUI/TenantCubeUI.play("doDmg")
 
 func _on_new_journal_action(sentence):
