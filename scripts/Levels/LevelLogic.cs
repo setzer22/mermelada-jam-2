@@ -90,9 +90,9 @@ public static class LevelLogic
         {
             0 => 5, // posh
             1 => 10, // artist
-            2 => 15, // blue collar
-            3 => 20, // inversor
-            4 => 100, // ghost hunter
+            2 => 10, // blue collar
+            3 => 10, // inversor
+            4 => 90, // ghost hunter
             _ => int.MaxValue,
         };
     }
