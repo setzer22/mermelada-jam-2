@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=14 format=2]
 
 [ext_resource path="res://scenes/GameLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Tenants/BlueCollar.tscn" type="PackedScene" id=2]
@@ -7,6 +7,12 @@
 [ext_resource path="res://scenes/ItemProps/Blanket.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/ItemProps/Plug.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/ItemProps/Lamp.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/ItemProps/Table.tscn" type="PackedScene" id=8]
+[ext_resource path="res://scenes/ItemProps/Wardrobe.tscn" type="PackedScene" id=9]
+[ext_resource path="res://scenes/ItemProps/Phone.tscn" type="PackedScene" id=10]
+[ext_resource path="res://scenes/ItemProps/Drawer.tscn" type="PackedScene" id=11]
+[ext_resource path="res://scenes/ItemProps/Pillow.tscn" type="PackedScene" id=12]
+[ext_resource path="res://scenes/ItemProps/Pared_Invisible.tscn" type="PackedScene" id=13]
 
 [node name="Node2D" instance=ExtResource( 1 )]
 position = Vector2( 1013, 297 )
@@ -23,11 +29,35 @@ position = Vector2( 132, 160 )
 [node name="Blanket" parent="YSort/Couch" index="5" instance=ExtResource( 5 )]
 position = Vector2( 69, -63 )
 
-[node name="BlueCollar" parent="YSort" index="3" instance=ExtResource( 2 )]
+[node name="Lamp" parent="YSort" index="3" instance=ExtResource( 7 )]
+position = Vector2( -788, 176 )
+
+[node name="Drawer2" parent="YSort" index="4" instance=ExtResource( 11 )]
+position = Vector2( -1212, 171 )
+
+[node name="Pillow" parent="YSort/Drawer2" index="5" instance=ExtResource( 12 )]
+position = Vector2( 1457, 44 )
+
+[node name="Drawer" parent="YSort" index="5" instance=ExtResource( 11 )]
+position = Vector2( -974, 177 )
+
+[node name="Table" parent="YSort" index="6" instance=ExtResource( 8 )]
+position = Vector2( 756, 180 )
+
+[node name="Phone" parent="YSort/Table" index="5" instance=ExtResource( 10 )]
+position = Vector2( 93, -134 )
+
+[node name="Wardrobe" parent="YSort" index="7" instance=ExtResource( 9 )]
+position = Vector2( 496, 162 )
+
+[node name="BlueCollar" parent="YSort" index="8" instance=ExtResource( 2 )]
 position = Vector2( -664, 179 )
+
+[node name="ParedInvisible2" parent="YSort" index="9" instance=ExtResource( 13 )]
+position = Vector2( 1066, -295 )
+
+[node name="ParedInvisible" parent="YSort" index="10" instance=ExtResource( 13 )]
+position = Vector2( -1416, -295 )
 
 [node name="GUI" parent="Camera2D" index="0"]
 SceneOrder = 3
-
-[node name="Lamp" parent="." index="4" instance=ExtResource( 7 )]
-position = Vector2( -788, 176 )
