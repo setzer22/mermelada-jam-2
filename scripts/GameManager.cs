@@ -10,6 +10,12 @@ public class GameManager : Node
     const int MAX_ACTIONS = 2;
 
     [Signal]
+    delegate void LevelCompleted();
+
+    [Signal]
+    delegate void LevelFailed();
+
+    [Signal]
     delegate void InkSpent(float amountPct);
 
     [Signal]
@@ -205,6 +211,7 @@ public class GameManager : Node
 
     public void RestartLevel()
     {
+        EmitSignal(nameof(LevelFailed));
         LoadLevel(
             new Dictionary<PackedScene, bool>()
             {
@@ -217,6 +224,8 @@ public class GameManager : Node
 
     public void GoToNextLevel()
     {
+        EmitSignal(nameof(LevelCompleted));
+
         levelIndex += 1;
 
         switch (levelIndex)

@@ -8,8 +8,10 @@ func _ready():
 	get_node("%StartButton").connect("onClick", self, "_on_StartButton_pressed")
 	get_node("%OptionsButton").connect("onClick",self, "_on_OptionsButton_pressed")
 	get_node("%QuitButton").connect("onClick", self, "_on_QuitButton_pressed")
+	get_node("/root/SoundManager").ChangeAmbientSound("Menu")
 
 func _on_StartButton_pressed():
+	get_node("/root/SoundManager").ChangeAmbientSound("Office")
 	GameManager.GoToNextLevel()
 
 func _on_QuitButton_pressed():

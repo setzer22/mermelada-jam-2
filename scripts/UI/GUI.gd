@@ -1,5 +1,8 @@
 extends Control
 
+signal start_day
+signal start_night
+
 var timer
 var clockAmountProgress
 var fill_speed = 1
@@ -53,9 +56,11 @@ func _on_Timer_timeout():
 		if $Panel/ClockProgress/Label.text == "DAY":
 			$Panel/ClockProgress/Label.text = "NIGHT"
 			$Panel/DayNightFilter.visible = true
+			emit_signal("start_night")
 		else:
 			$Panel/ClockProgress/Label.text = "DAY"
 			$Panel/DayNightFilter.visible = false
+			emit_signal("start_day")
 
 # Click mode for house ratings notes
 func _on_StarsButton_pressed():
