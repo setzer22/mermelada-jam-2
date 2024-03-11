@@ -10,11 +10,11 @@ public class HouseRating : TextureRect
     
     private static List<string> badRatingStrings = new List<string>()
     {
-        "Las energias son\nun poco turbias\n",
+        "Las energías son\nun poco turbias\n",
         "Las cosas no se quedan\ndonde las dejas\n",
         "La electricidad falla\nmucho sin motivo\n",
         "Los muebles hacen ruidos\ny se abren solos\n",
-        "Decian que habia\n fantasmas pero era\nmentira",
+        "Decían que habia\n fantasmas pero era\nmentira",
     };
 
     [Export]

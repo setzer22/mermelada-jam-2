@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://resources/fonts/orange juice 2.0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scenes/MenuButton.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://resources/audio/ambient/725337__ichitaraaa__spoopyamb.ogg" type="AudioStream" id=5]
 [ext_resource path="res://resources/audio/sfx/button-hover.wav" type="AudioStream" id=6]
 [ext_resource path="res://resources/audio/sfx/button-select.wav" type="AudioStream" id=7]
+[ext_resource path="res://assets/background_living_room.png" type="Texture" id=8]
 
 [sub_resource type="DynamicFont" id=1]
 size = 100
@@ -16,27 +17,37 @@ font_data = ExtResource( 1 )
 script = ExtResource( 3 )
 mainGameScene = ExtResource( 4 )
 
+[node name="TextureRect" type="TextureRect" parent="."]
+margin_right = 1023.0
+margin_bottom = 601.0
+texture = ExtResource( 8 )
+expand = true
+
 [node name="ColorRect" type="ColorRect" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
-color = Color( 0.188235, 0.188235, 0.188235, 1 )
+color = Color( 0.611765, 0.631373, 0.384314, 0.266667 )
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
 
 [node name="CenterContainer" type="CenterContainer" parent="VBoxContainer"]
+margin_top = 50.0
 margin_right = 1024.0
 margin_bottom = 300.0
 rect_min_size = Vector2( 0, 300 )
 
 [node name="Label" type="Label" parent="VBoxContainer/CenterContainer"]
-margin_left = 241.0
-margin_top = 100.0
-margin_right = 783.0
-margin_bottom = 200.0
+margin_left = 157.0
+margin_top = 48.0
+margin_right = 866.0
+margin_bottom = 251.0
+custom_colors/font_color = Color( 0.0576248, 0.177734, 0.149137, 1 )
 custom_fonts/font = SubResource( 1 )
-text = "Forever Home"
+text = "La última morada
+(Forever Home)"
+align = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 margin_top = 304.0

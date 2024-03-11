@@ -63,9 +63,9 @@ func _on_StarsButton_pressed():
 
 # Keyboard mode for house ratings notes, diary and ink removal
 func _input(event):
-	if event is InputEventKey and event.scancode == KEY_J and event.pressed:
+	if event is InputEventKey and event.scancode == KEY_R and event.pressed:
 		houseRatingLabel.visible = !houseRatingLabel.visible
-	if event is InputEventKey and event.scancode == KEY_K and event.pressed:
+	if event is InputEventKey and event.scancode == KEY_F and event.pressed:
 		journal.visible = !journal.visible
 	if event is InputEventKey and event.scancode == KEY_L and event.pressed:
 		if inkProgressBar.value >=0:
