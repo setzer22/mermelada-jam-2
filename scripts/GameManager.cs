@@ -289,7 +289,7 @@ public class GameManager : Node
                             false
                         },
                     },
-                    GD.Load<PackedScene>("res://scenes/Levels/Level_GhostHunter.tscn")
+                    GD.Load<PackedScene>("res://scenes/Levels/Level_Ghosthunter.tscn")
                 );
                 break;
             case 5:
