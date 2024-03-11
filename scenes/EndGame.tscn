@@ -45,13 +45,21 @@ margin_bottom = 580.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 custom_fonts/font = ExtResource( 1 )
-text = "PATATA PATATA
+text = "La última morada
 
-CREDITOS
+Thanks for playing!
 
-1234
+Team:
+@iris_time - Art
+@kath_art_ic - Game design
+@setzer_22 - Art & dev
+kunsto.itch.io - GUI & dev
+@aniol - VFX, sounds, dev
 
-AQUI HI HAURIA D'ANAR ALGO AMB SENTIT PERO BUENO QUE HI FAREM"
+Credits:
+Mojang (font)
+Orange Juice 2.0 (font)
+Sr.Toasty & Narik (asset packs)"
 autowrap = true
 
 [node name="EndStory" type="Label" parent="."]
