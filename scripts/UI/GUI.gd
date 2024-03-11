@@ -31,6 +31,7 @@ func _ready():
 	journal.visible = false
 	inkProgressBar = $Panel/PenTexture/InkProgressBar
 	startsButton = $Panel/StarsButton
+	$Panel/DayNightFilter.visible = false
 	
 	GameManager.connect("InkSpent", self, "_on_ink_spent");
 	GameManager.connect("TenantDamaged", self, "_on_tenant_damaged");
@@ -51,8 +52,10 @@ func _on_Timer_timeout():
 		$Panel/ClockProgress.set_value(clockAmountProgress)
 		if $Panel/ClockProgress/Label.text == "DAY":
 			$Panel/ClockProgress/Label.text = "NIGHT"
+			$Panel/DayNightFilter.visible = true
 		else:
 			$Panel/ClockProgress/Label.text = "DAY"
+			$Panel/DayNightFilter.visible = false
 
 # Click mode for house ratings notes
 func _on_StarsButton_pressed():

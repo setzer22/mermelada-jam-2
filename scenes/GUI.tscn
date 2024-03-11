@@ -224,7 +224,6 @@ texture = ExtResource( 4 )
 expand = true
 
 [node name="ClockProgress" type="TextureProgress" parent="Panel"]
-visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -106.0
@@ -356,6 +355,12 @@ value = 100.0
 root_node = NodePath("../../..")
 anims/RESET = SubResource( 13 )
 anims/goDmg = SubResource( 14 )
+
+[node name="DayNightFilter" type="ColorRect" parent="Panel"]
+visible = false
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color( 0.0666667, 0.172549, 0.592157, 0.219608 )
 
 [connection signal="pressed" from="Panel/StarsButton" to="." method="_on_StarsButton_pressed"]
 [connection signal="timeout" from="Panel/ClockProgress/Timer" to="." method="_on_Timer_timeout"]
