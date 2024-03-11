@@ -6,7 +6,7 @@ signal start_night
 var timer
 var clockAmountProgress
 var fill_speed = 1
-var MAX_TIMER = 60
+export var MAX_TIMER = 60
 var INK_PER_SHOOT = 20
 var houseRatingLabel
 var houseRatingVBoxContainer
