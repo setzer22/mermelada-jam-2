@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://resources/FontBody.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/happyend.png" type="Texture" id=2]
 [ext_resource path="res://scenes/EndGame.cs" type="Script" id=3]
 [ext_resource path="res://resources/FontSubtitle.tres" type="DynamicFont" id=4]
+[ext_resource path="res://resources/audio/music/Ghost_Dance_(MacLeod,_Kevin).mp3" type="AudioStream" id=5]
 
 [node name="Control" type="Control"]
 anchor_right = 1.0
@@ -76,3 +77,9 @@ y un grupo de voluntarios montó una protectora.
 El fantasma y los animales consiguieron,
 por fin, su forever home."
 align = 1
+
+[node name="Node" type="Node" parent="."]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="Node"]
+stream = ExtResource( 5 )
+autoplay = true
