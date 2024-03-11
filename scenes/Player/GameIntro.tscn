@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://scenes/LevelIntro.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/Player/Player.tscn" type="PackedScene" id=2]
+
+[node name="LevelIntro" instance=ExtResource( 1 )]
+OutroText = "Tampoco es que la zona fuese tan buena, no tienen ni bubbletea."
+
+[node name="Title" parent="." index="1"]
+text = "El que pactó con el diablo"
+
+[node name="Subtitle" parent="." index="2"]
+text = "Vendió su alma al diablo para escribir su mejor novela. Pero también la sacrificicó a cambio de una hipoteca para su pisito ideal. Mientras diablo y banco se pelean, su alma en pena disfruta del piso con paz eterna.
+
+O eso se pensaba..."
+
+[node name="Player" parent="Tenant" index="0" instance=ExtResource( 2 )]
+
+[node name="EvictedLabel" parent="." index="4"]
+text = ""

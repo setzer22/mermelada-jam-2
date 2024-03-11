@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using Godot;
 
@@ -93,6 +94,7 @@ public class GameManager : Node
         EmitSignal(nameof(NewJournalAction), sentence);
     }
 
+    public PackedScene currentLevelScene = null;
     public Node currentLevel = null;
 
     public void GoToMainMenu()
@@ -106,12 +108,12 @@ public class GameManager : Node
         currentLevel = mainMenu;
     }
 
-    public async Task PlayOutro(PackedScene outroScene)
+    public async Task PlayTransition(PackedScene outroScene, bool isOutro)
     {
         var outro =
             outroScene.Instance() as LevelIntro
             ?? throw new Exception("Outro scene must be a LevelIntro");
-        outro.IsOutro = true;
+        outro.IsOutro = isOutro;
 
         GetTree().Root.AddChild(outro);
 
@@ -121,35 +123,28 @@ public class GameManager : Node
     }
 
     public async void LoadLevel(
-        PackedScene introScene,
-        PackedScene outroScene,
+       Dictionary<PackedScene, bool> transitionScenes,
         PackedScene levelScene
     )
     {
         currentLevel?.QueueFree();
 
-        if (outroScene != null)
+        foreach (KeyValuePair<PackedScene, bool> pair in transitionScenes)
         {
-            await PlayOutro(outroScene);
+            await PlayTransition(pair.Key, pair.Value);
         }
-
-        var intro = introScene.Instance();
-        GetTree().Root.AddChild(intro);
-
-        await ToSignal(intro, "Finished");
-
-        intro.QueueFree();
 
         var level = levelScene.Instance();
         GetTree().Root.AddChild(level);
         currentLevel = level;
+        currentLevelScene = levelScene;
     }
 
     public async void LoadEndGame(PackedScene outroScene)
     {
         currentLevel?.QueueFree();
 
-        await PlayOutro(outroScene);
+        await PlayTransition(outroScene, true);
 
         var endGame = GD.Load<PackedScene>("res://scenes/EndGame.tscn").Instance();
         GetTree().Root.AddChild(endGame);
@@ -157,6 +152,18 @@ public class GameManager : Node
     }
 
     public int levelIndex = -1;
+
+    public void RestartLevel()
+    {
+        LoadLevel(
+            new Dictionary<PackedScene, bool>()
+            {
+                { GD.Load<PackedScene>("res://scenes/Player/GameOver.tscn"), true },
+                { GD.Load<PackedScene>("res://scenes/Player/Retry.tscn"), false },
+            },
+            levelScene: currentLevelScene
+        );
+    }
 
     public void GoToNextLevel()
     {
@@ -167,42 +174,62 @@ public class GameManager : Node
             // TODO: !!!! ADJUST MAIN.tscn to load different levels
             case 0:
                 LoadLevel(
-                    introScene: GD.Load<PackedScene>("res://scenes/Tenants/PoshIntro.tscn"),
-                    outroScene: null,
+                    new Dictionary<PackedScene, bool>()
+                    {
+                        { GD.Load<PackedScene>("res://scenes/Player/GameIntro.tscn"), false },
+                        { GD.Load<PackedScene>("res://scenes/ToRent/0_ToRent.tscn"), false },
+                        { GD.Load<PackedScene>("res://scenes/Tenants/PoshIntro.tscn"), false },
+                    },
                     levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
                 );
                 break;
             case 1:
                 LoadLevel(
-                    introScene: GD.Load<PackedScene>("res://scenes/Tenants/PainterIntro.tscn"),
-                    outroScene: GD.Load<PackedScene>("res://scenes/Tenants/PoshIntro.tscn"),
+                    new Dictionary<PackedScene, bool>()
+                    {
+                        { GD.Load<PackedScene>("res://scenes/Tenants/PoshIntro.tscn"), true },
+                        { GD.Load<PackedScene>("res://scenes/ToRent/1_ToRent.tscn"), false },
+                        { GD.Load<PackedScene>("res://scenes/Tenants/PainterIntro.tscn"), false },
+                    },
                     levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
                 );
                 break;
             case 2:
                 LoadLevel(
-                    introScene: GD.Load<PackedScene>("res://scenes/Tenants/BlueCollarIntro.tscn"),
-                    outroScene: GD.Load<PackedScene>("res://scenes/Tenants/PainterIntro.tscn"),
+                    new Dictionary<PackedScene, bool>()
+                    {
+                        { GD.Load<PackedScene>("res://scenes/Tenants/PainterIntro.tscn"), true },
+                        { GD.Load<PackedScene>("res://scenes/ToRent/2_ToRent.tscn"), false },
+                        {  GD.Load<PackedScene>("res://scenes/Tenants/BlueCollarIntro.tscn"), false },
+                    },
                     levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
                 );
                 break;
             case 3:
                 LoadLevel(
-                    introScene: GD.Load<PackedScene>("res://scenes/Tenants/InvestorIntro.tscn"),
-                    outroScene: GD.Load<PackedScene>("res://scenes/Tenants/BlueCollarIntro.tscn"),
+                    new Dictionary<PackedScene, bool>()
+                    {
+                        { GD.Load<PackedScene>("res://scenes/Tenants/BlueCollarIntro.tscn"), true },
+                        { GD.Load<PackedScene>("res://scenes/ToRent/3_ToRent.tscn"), false },
+                        { GD.Load<PackedScene>("res://scenes/Tenants/InvestorIntro.tscn"), false },
+                    },
                     levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
                 );
                 break;
             case 4:
                 LoadLevel(
-                    introScene: GD.Load<PackedScene>("res://scenes/Tenants/GhostHunterIntro.tscn"),
-                    outroScene: GD.Load<PackedScene>("res://scenes/Tenants/InvestorIntro.tscn"),
+                    new Dictionary<PackedScene, bool>()
+                    {
+                        { GD.Load<PackedScene>("res://scenes/Tenants/InvestorIntro.tscn"), true },
+                        { GD.Load<PackedScene>("res://scenes/ToRent/4_ToRent.tscn"), false },
+                        { GD.Load<PackedScene>("res://scenes/Tenants/GhostHunterIntro.tscn"), false },
+                    },
                     GD.Load<PackedScene>("res://scenes/Main.tscn")
                 );
                 break;
             case 5:
                 LoadEndGame(
-                    outroScene: GD.Load<PackedScene>("res://scenes/Tenants/GhostHunterIntro.tscn")
+                    GD.Load<PackedScene>("res://scenes/Tenants/GhostHunterIntro.tscn")
                 );
                 break;
         }
