@@ -35,4 +35,4 @@ polygon = PoolVector2Array( -78, -14, -110, 14, 106, 15, 106, -14 )
 
 [node name="Grabbable" type="Node" parent="." index="3"]
 script = ExtResource( 5 )
-Key = "beer"
+Key = "blanket"
