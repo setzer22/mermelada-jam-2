@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=28 format=2]
 
 [ext_resource path="res://resources/fonts/orange juice 2.0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://resources/sprites/UI/Star_Full2.png" type="Texture" id=2]
@@ -13,7 +13,9 @@
 [ext_resource path="res://resources/sprites/UI/Pen.png" type="Texture" id=11]
 [ext_resource path="res://resources/sprites/UI/journal2.png" type="Texture" id=12]
 [ext_resource path="res://resources/sprites/UI/stars_button2.png" type="Texture" id=13]
-[ext_resource path="res://resources/fonts/Texts_Font.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://resources/sprites/UI/tenants_UI/cube_posh.png" type="Texture" id=14]
+[ext_resource path="res://resources/fonts/Mojang-Regular.ttf" type="DynamicFontData" id=15]
+[ext_resource path="res://resources/sprites/UI/tenants_UI/tenant_cube.png" type="Texture" id=16]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 0.764706, 0.588235, 0 )
@@ -26,6 +28,7 @@ font_data = ExtResource( 1 )
 blend_mode = 1
 
 [sub_resource type="DynamicFont" id=4]
+size = 15
 font_data = ExtResource( 15 )
 
 [sub_resource type="Animation" id=5]
@@ -43,6 +46,92 @@ tracks/0/keys = {
 "values": [ 0.0, 5.0, -5.0, 3.0, 1.0, 0.0 ]
 }
 
+[sub_resource type="StyleBoxFlat" id=6]
+bg_color = Color( 0.647059, 0.470588, 0.333333, 1 )
+
+[sub_resource type="StyleBoxFlat" id=7]
+bg_color = Color( 0.831373, 0.776471, 0.572549, 1 )
+
+[sub_resource type="Shader" id=12]
+code = "shader_type canvas_item;
+
+uniform vec4 color : hint_color;
+
+void fragment() {
+    // Modificar el color del fragmento utilizando el color uniforme
+    COLOR.rgb *= color.rgb;
+}"
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 12 )
+shader_param/color = null
+
+[sub_resource type="Animation" id=13]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:theme")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ null ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath(".:material")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ SubResource( 9 ) ]
+}
+tracks/2/type = "value"
+tracks/2/path = NodePath(".:material:shader")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ SubResource( 12 ) ]
+}
+tracks/3/type = "value"
+tracks/3/path = NodePath(".:rect_scale")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/keys = {
+"times": PoolRealArray( 0 ),
+"transitions": PoolRealArray( 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ) ]
+}
+
+[sub_resource type="Animation" id=14]
+resource_name = "goDmg"
+tracks/0/type = "value"
+tracks/0/path = NodePath(".:rect_scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/keys = {
+"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
+"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"update": 0,
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+}
+
 [node name="GUI" type="Control"]
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -56,9 +145,9 @@ custom_styles/panel = SubResource( 1 )
 [node name="PenTexture" type="TextureRect" parent="Panel"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -119.0
+margin_left = -165.0
 margin_top = 16.0
-margin_right = 257.0
+margin_right = 211.0
 margin_bottom = 88.0
 texture = ExtResource( 11 )
 expand = true
@@ -117,10 +206,12 @@ margin_left = -140.0
 margin_top = 1.0
 margin_right = -28.0
 margin_bottom = 111.0
+rect_pivot_offset = Vector2( -14, 20 )
 texture = ExtResource( 4 )
 expand = true
 
 [node name="ClockProgress" type="TextureProgress" parent="Panel"]
+visible = false
 anchor_left = 1.0
 anchor_right = 1.0
 margin_left = -106.0
@@ -166,17 +257,24 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = -207.0
-margin_top = -59.0
-margin_right = -9.0
-margin_bottom = -25.0
+margin_left = -232.0
+margin_top = -58.0
+margin_right = 6.0
+margin_bottom = -24.0
+rect_scale = Vector2( 0.9, 0.9 )
 rect_pivot_offset = Vector2( 99, 17 )
 color = Color( 0, 0, 0, 0.0980392 )
 
 [node name="JournalTextHelpUI" type="Label" parent="Panel/JournalText"]
 material = SubResource( 3 )
-anchor_right = 1.0
-anchor_bottom = 1.0
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+margin_left = -118.0
+margin_top = -16.0
+margin_right = 119.0
+margin_bottom = 18.0
 custom_fonts/font = SubResource( 4 )
 text = "Press K to show Journal"
 align = 1
@@ -188,7 +286,6 @@ valign = 1
 anims/Wiggle = SubResource( 5 )
 
 [node name="Journal" type="TextureRect" parent="Panel"]
-visible = false
 anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
@@ -203,16 +300,47 @@ expand = true
 [node name="ActionsText" type="Label" parent="Panel/Journal"]
 anchor_left = 0.5
 anchor_right = 0.5
-margin_left = -73.192
-margin_top = 16.0
-margin_right = 96.808
-margin_bottom = 70.0
+margin_left = -73.5
+margin_top = 2.0
+margin_right = 94.5
+margin_bottom = 75.0
 custom_colors/font_color = Color( 0.27451, 0.478431, 0.0509804, 1 )
 custom_fonts/font = SubResource( 4 )
-text = "- El objeto X ha sido movido hacia Y
-- Aasdasdasd"
 valign = 1
 autowrap = true
+
+[node name="TenantCubeUI" type="TextureRect" parent="Panel"]
+margin_left = 751.0
+margin_top = 8.0
+margin_right = 853.0
+margin_bottom = 107.0
+texture = ExtResource( 16 )
+expand = true
+
+[node name="TenantTexture" type="TextureRect" parent="Panel/TenantCubeUI"]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 1.0
+margin_top = 11.0
+margin_right = -53.0
+margin_bottom = -40.0
+rect_scale = Vector2( 2, 2 )
+texture = ExtResource( 14 )
+
+[node name="TenantLifeBar" type="ProgressBar" parent="Panel/TenantCubeUI"]
+margin_left = 14.0
+margin_top = 13.0
+margin_right = 87.0
+margin_bottom = 27.0
+custom_colors/font_color = Color( 0.167832, 0.123211, 0.0885051, 1 )
+custom_styles/fg = SubResource( 6 )
+custom_styles/bg = SubResource( 7 )
+value = 50.0
+
+[node name="CubeAnimation" type="AnimationPlayer" parent="Panel/TenantCubeUI"]
+root_node = NodePath("")
+anims/RESET = SubResource( 13 )
+anims/goDmg = SubResource( 14 )
 
 [connection signal="pressed" from="Panel/StarsButton" to="." method="_on_StarsButton_pressed"]
 [connection signal="timeout" from="Panel/ClockProgress/Timer" to="." method="_on_Timer_timeout"]
