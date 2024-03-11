@@ -1,7 +1,7 @@
+using Godot;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using Godot;
 
 public class GameManager : Node
 {
@@ -66,12 +66,21 @@ public class GameManager : Node
 
         if (performedActions.Add(sentence))
         {
+            int annoyance = LevelLogic.GetAnnoyanceLevel(levelIndex, item, surface);
+            accumulatedAnnoyanceLevel += annoyance;
+
             EmitSignal(nameof(InkSpent), 1);
             EmitSignal(nameof(NewJournalAction), sentence);
+            EmitSignal(nameof(UpdateRatings), annoyance);
 
-            if (performedActions.Count > MAX_ACTIONS)
+            GD.PrintErr(accumulatedAnnoyanceLevel);
+            if (performedActions.Count > LevelLogic.GetMaxAnnoyanceLevel(levelIndex))
             {
                 RestartLevel();
+            }
+            else if (accumulatedAnnoyanceLevel >= LevelLogic.GetMaxAnnoyanceLevel(levelIndex))
+            {
+                GoToNextLevel();
             }
         }
     }
@@ -106,17 +115,27 @@ public class GameManager : Node
 
         if (performedActions.Add(sentence))
         {
+            int annoyance = LevelLogic.GetAnnoyanceLevel(levelIndex, grabbed, switched);
+            accumulatedAnnoyanceLevel += annoyance;
+
             EmitSignal(nameof(InkSpent), 1);
             EmitSignal(nameof(NewJournalAction), sentence);
+            EmitSignal(nameof(UpdateRatings), annoyance);
 
-            if (performedActions.Count > MAX_ACTIONS)
+            GD.PrintErr(accumulatedAnnoyanceLevel);
+            if (performedActions.Count > LevelLogic.GetMaxAnnoyanceLevel(levelIndex))
             {
                 RestartLevel();
+            }
+            else if (accumulatedAnnoyanceLevel >= LevelLogic.GetMaxAnnoyanceLevel(levelIndex))
+            {
+                GoToNextLevel();
             }
         }
     }
 
     private readonly HashSet<string> performedActions = new HashSet<string>();
+    private int accumulatedAnnoyanceLevel;
     public PackedScene currentLevelScene = null;
     public Node currentLevel = null;
 
@@ -152,6 +171,7 @@ public class GameManager : Node
     {
         currentLevel?.QueueFree();
         performedActions.Clear();
+        accumulatedAnnoyanceLevel = 0;
 
         foreach (KeyValuePair<PackedScene, bool> pair in transitionScenes)
         {
