@@ -33,6 +33,7 @@ func _ready():
 	startsButton = $Panel/StarsButton
 	
 	GameManager.connect("InkSpent", self, "_on_ink_spent");
+	GameManager.connect("TenantDamaged", self, "_on_tenant_damaged");
 	GameManager.connect("NewJournalAction", self, "_on_new_journal_action")
 	GameManager.connect("UpdateRatings", self, "_on_new_ratings")
 	
@@ -79,14 +80,17 @@ func _input(event):
 			index += 1
 			rating.add_color_override("font_color", Color(BAD_COLOR_RATING))
 
-func _on_ink_spent(amount):
-	inkProgressBar.value -= amount
+func _on_ink_spent(amountPct):
+	inkProgressBar.value -= amountPct
 	print("spent some ink")
+	
+func _on_tenant_damaged(amountPct):
+	print("REDUCE LIFE BAR BY" + str(amountPct))
+	find_node("TenantLifeBar").value -= amountPct
 	$Panel/TenantCubeUI/CubeAnimation.play("goDmg")
 
 func _on_new_journal_action(sentence):
 	journal.get_node("ActionsText").text += "\n - " + sentence;
-	
 	
 	# Small rotation wiggle -- this helps the player notice that a new action has been added
 	# to the log even when they don't have it open.
