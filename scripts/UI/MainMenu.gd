@@ -16,5 +16,9 @@ func _on_QuitButton_pressed():
 	get_tree().quit()
 
 func _on_OptionsButton_pressed():
-	print("options not implemented yet, consider deleting the button")
+	$OptionsMenu.visible = !$OptionsMenu.visible
 
+func _input(event):
+	if event is InputEventKey and event.scancode == KEY_ESCAPE and event.pressed:
+		if $OptionsMenu.visible:
+			$OptionsMenu.visible = false
