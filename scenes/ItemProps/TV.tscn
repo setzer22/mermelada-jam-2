@@ -18,6 +18,7 @@ shader_param/inside = false
 shader_param/add_margins = true
 
 [node name="TV" instance=ExtResource( 1 )]
+HumanReadableName = "la tele"
 
 [node name="Shade" parent="." index="0"]
 position = Vector2( 0, -88.924 )

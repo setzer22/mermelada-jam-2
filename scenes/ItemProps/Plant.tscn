@@ -18,6 +18,7 @@ shader_param/add_margins = true
 [sub_resource type="CircleShape2D" id=1]
 
 [node name="Plant" instance=ExtResource( 1 )]
+HumanReadableName = "la planta"
 
 [node name="Shade" parent="." index="0"]
 position = Vector2( 0, -166.15 )
