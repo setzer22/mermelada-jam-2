@@ -15,3 +15,6 @@ position = Vector2( 45, 174 )
 
 [node name="Painter" parent="YSort" index="2" instance=ExtResource( 2 )]
 position = Vector2( -611, 181 )
+
+[node name="GUI" parent="Camera2D" index="0"]
+SceneOrder = 2

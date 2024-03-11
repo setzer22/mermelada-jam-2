@@ -31,3 +31,6 @@ position = Vector2( 49, -96 )
 
 [node name="Posh" parent="YSort" index="5" instance=ExtResource( 2 )]
 position = Vector2( -711, 232 )
+
+[node name="GUI" parent="Camera2D" index="0"]
+SceneOrder = 1
