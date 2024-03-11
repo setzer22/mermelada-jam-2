@@ -7,6 +7,8 @@ public class GameManager : Node
 {
     public static GameManager Singleton;
 
+    const int MAX_ACTIONS = 2;
+
     [Signal]
     delegate void InkSpent(float amount);
 
@@ -61,7 +63,16 @@ public class GameManager : Node
         }
 
         GD.Print(sentence);
-        EmitSignal(nameof(NewJournalAction), sentence);
+
+        if (performedActions.Add(sentence))
+        {
+            EmitSignal(nameof(NewJournalAction), sentence);
+
+            if (performedActions.Count > MAX_ACTIONS)
+            {
+                RestartLevel();
+            }
+        }
     }
 
     /// <summary>
@@ -91,9 +102,19 @@ public class GameManager : Node
         }
 
         GD.Print(sentence);
-        EmitSignal(nameof(NewJournalAction), sentence);
+
+        if (performedActions.Add(sentence))
+        {
+            EmitSignal(nameof(NewJournalAction), sentence);
+
+            if (performedActions.Count > MAX_ACTIONS)
+            {
+                RestartLevel();
+            }
+        }
     }
 
+    private readonly HashSet<string> performedActions = new HashSet<string>();
     public PackedScene currentLevelScene = null;
     public Node currentLevel = null;
 
@@ -128,6 +149,7 @@ public class GameManager : Node
     )
     {
         currentLevel?.QueueFree();
+        performedActions.Clear();
 
         foreach (KeyValuePair<PackedScene, bool> pair in transitionScenes)
         {
