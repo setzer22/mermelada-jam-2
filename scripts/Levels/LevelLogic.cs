@@ -36,7 +36,7 @@ public static class LevelLogic
         switch (level)
         {
             case 0: // posh
-                if (switchable.Name == "router") annoyance = 9001;
+                if (switchable?.Name == "router") annoyance = 9001;
                 else annoyance = 1;
                 break;
             case 1: // artist
@@ -52,6 +52,16 @@ public static class LevelLogic
                 annoyance = 1;
                 break;
             default: throw new Exception("Uh oh, I didn't think on that...");
+        }
+        
+        if (item?.Key == "beer" && switchable?.Key == "plant") {
+            annoyance = 3;
+        }
+        if (item?.Key == "blanket" && switchable?.Key == "tv") {
+            annoyance = 3;
+        }
+        if (item?.Key == "fork" && switchable?.Key == "plug") {
+            annoyance = 3;
         }
 
         return annoyance;

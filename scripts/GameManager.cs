@@ -92,11 +92,16 @@ public class GameManager : Node
         {
             // NOTE: We use child nodes with small gdscript behaviours attached
             // to handle this sort of cosmetic stuff in a dynamic way.
-            switched.GetNode("PlantScript").Call("cover_in_beer");
-            grabbed.GetNode("BeerScript").Call("empty_bottle");
+            grabbed.Prop.GetNode("BeerScript").Call("empty_bottle");
 
             sentence = "Regué la planta con cerveza";
             sound = SFXSoundType.PoorLiquid;
+        }
+        if (switched.Key == "plug" && grabbed?.Key == "fork") {
+            sentence = "Metí un tenedor en el enchufe";
+        }
+        if (switched.Key == "tv" && grabbed?.Key == "blanket") {
+            sentence = "Cubrí la tele con una manta";
         }
 
         // More special actions here...

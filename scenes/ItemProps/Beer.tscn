@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/beer_base.png" type="Texture" id=1]
 [ext_resource path="res://scenes/ItemProp.tscn" type="PackedScene" id=2]
 [ext_resource path="res://shaders/ItemProp.gdshader" type="Shader" id=3]
 [ext_resource path="res://scenes/ItemProps/Grabbable.cs" type="Script" id=4]
+[ext_resource path="res://scenes/ItemProps/BeerScript.gd" type="Script" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -31,3 +32,6 @@ polygon = PoolVector2Array( -11, -11, -36, -6, -28, 3, 14, 3, 22, -5 )
 [node name="Grabbable" type="Node" parent="." index="3"]
 script = ExtResource( 4 )
 Key = "beer"
+
+[node name="BeerScript" type="Node" parent="." index="4"]
+script = ExtResource( 5 )

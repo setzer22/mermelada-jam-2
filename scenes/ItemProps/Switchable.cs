@@ -20,14 +20,14 @@ public class Switchable : Node
     /// signal.
     /// </summary>
     [Signal]
-    delegate void StateChanged(bool isOn);
+    delegate void StateChanged(bool isOn, string playerWasHolding);
 
     [Export]
     private bool IsOn = true;
 
-    public void Switch()
+    public void Switch(string playerWasHolding)
     {
         IsOn = !IsOn;
-        EmitSignal(nameof(StateChanged), IsOn);
+        EmitSignal(nameof(StateChanged), IsOn, playerWasHolding);
     }
 }

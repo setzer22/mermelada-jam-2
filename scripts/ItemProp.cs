@@ -63,4 +63,12 @@ public class ItemProp : Node2D
     {
         return GetInteractionComponent<Switchable>(nameof(Switchable));
     }
+
+    public string GetKey()
+    {
+        return this.GrabbableComponent()?.Key
+            ?? this.SurfaceComponent()?.Key
+            ?? this.SwitchableComponent()?.Key
+            ?? null;
+    }
 }
