@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=2]
+[gd_scene load_steps=10 format=2]
 
 [ext_resource path="res://scenes/ItemProp.tscn" type="PackedScene" id=1]
 [ext_resource path="res://assets/TV_shade.png" type="Texture" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://shaders/ItemProp.gdshader" type="Shader" id=5]
 [ext_resource path="res://scenes/ItemProps/Switchable.cs" type="Script" id=6]
 [ext_resource path="res://scenes/ItemProps/TvOnOff.gd" type="Script" id=7]
+[ext_resource path="res://assets/TV_blanket.png" type="Texture" id=8]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -31,16 +32,23 @@ texture = ExtResource( 3 )
 
 [node name="OffSprite" type="Sprite" parent="." index="2"]
 visible = false
-scale = Vector2( 3.717, 3.717 )
+position = Vector2( 0, -89 )
+scale = Vector2( 3.717, 3.73 )
 texture = ExtResource( 4 )
+
+[node name="BlanketSprite" type="Sprite" parent="." index="3"]
+visible = false
+position = Vector2( 0, -93 )
+scale = Vector2( 3.717, 3.717 )
+texture = ExtResource( 8 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions" index="0"]
 polygon = PoolVector2Array( -111, -8, -85, 7, 115, 8, 74, -8 )
 
-[node name="TvOnOff" type="Node" parent="." index="4"]
+[node name="TvOnOff" type="Node" parent="." index="5"]
 script = ExtResource( 7 )
 
-[node name="Switchable" type="Node" parent="." index="5"]
+[node name="Switchable" type="Node" parent="." index="6"]
 script = ExtResource( 6 )
 Key = "tv"
 

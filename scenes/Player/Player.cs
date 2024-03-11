@@ -242,6 +242,12 @@ public class Player : KinematicBody2D, IGrabber
                 sw.Switch(this.grabbedObject?.Key);
 
                 GameManager.Singleton.SwitchedItemAction(sw, this.grabbedObject);
+                
+                // ULTRA-HACK: This shouldn't go here, too bad it's 1h30m before submission deadline
+                if (sw.Key == "tv" && this.grabbedObject?.Key == "blanket") {
+                    this.grabbedObject.Prop.QueueFree();
+                    this.grabbedObject = null;
+                }
 
                 handled = true;
             }

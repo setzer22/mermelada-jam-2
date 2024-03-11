@@ -53,6 +53,13 @@ public static class LevelLogic
                 break;
             default: throw new Exception("Uh oh, I didn't think on that...");
         }
+        
+        if (item.Key == "beer" && switchable.Key == "plant") {
+            annoyance = 3;
+        }
+        if (item.Key == "blanket" && switchable.Key == "tv") {
+            annoyance = 3;
+        }
 
         return annoyance;
     }
