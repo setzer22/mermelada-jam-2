@@ -5,10 +5,15 @@ public class SoundManager : Node
 {
     public static SoundManager Singleton;
 
+    // Ambient nodes
     AudioStreamPlayer Day => _day ??= GetNode<AudioStreamPlayer>("AmbientDay"); AudioStreamPlayer _day;
     AudioStreamPlayer Night => _night ??= GetNode<AudioStreamPlayer>("AmbientNight"); AudioStreamPlayer _night;
     AudioStreamPlayer Office => _office ??= GetNode<AudioStreamPlayer>("AmbientOffice"); AudioStreamPlayer _office;
     AudioStreamPlayer Menu => _menu ??= GetNode<AudioStreamPlayer>("AmbientMenu"); AudioStreamPlayer _menu;
+
+    // SFX nodes
+    AudioStreamPlayer Hover => _hover ??= GetNode<AudioStreamPlayer>("SFXHover"); AudioStreamPlayer _hover;
+    AudioStreamPlayer Select => _select ??= GetNode<AudioStreamPlayer>("SFXSelect"); AudioStreamPlayer _select;
 
     public override void _Ready()
     {
@@ -36,6 +41,27 @@ public class SoundManager : Node
         Office.Playing = type == AmbientSoundType.Office;
         Menu.Playing = type == AmbientSoundType.Menu;
     }
+
+    public void PlayOneShot(string sound = "Invalid")
+    {
+        SFXSoundType type = Enum.TryParse(sound, out SFXSoundType value)
+            ? value
+            : SFXSoundType.Invalid;
+
+        if (type == SFXSoundType.Invalid)
+        {
+            GD.Print($"missing or invalid SFX: {sound}");
+        }
+
+        AudioStreamPlayer sfx = type switch
+        {
+            SFXSoundType.Hover => Hover,
+            SFXSoundType.Select => Select,
+            _ => Hover,
+        };
+
+        sfx.Play();
+    }
 }
 
 public enum AmbientSoundType
@@ -45,4 +71,12 @@ public enum AmbientSoundType
     Day,
     Night,
     Office,
+}
+
+public enum SFXSoundType
+{
+    Invalid = default,
+    Hover,
+    Select,
+    Scream,
 }
