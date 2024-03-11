@@ -172,7 +172,8 @@ public class GameManager : Node
 
     public async void LoadLevel(
         Dictionary<PackedScene, bool> transitionScenes,
-        PackedScene levelScene
+        PackedScene levelScene,
+        PackedScene tenant
     )
     {
         currentLevel?.QueueFree();
@@ -186,6 +187,7 @@ public class GameManager : Node
 
         var level = levelScene.Instance();
         GetTree().Root.AddChild(level);
+        level.AddChild(tenant.Instance());
         currentLevel = level;
         currentLevelScene = levelScene;
     }
@@ -211,7 +213,8 @@ public class GameManager : Node
                 { GD.Load<PackedScene>("res://scenes/Player/GameOver.tscn"), true },
                 { GD.Load<PackedScene>("res://scenes/Player/Retry.tscn"), false },
             },
-            levelScene: currentLevelScene
+            levelScene: currentLevelScene,
+            tenant: GD.Load<PackedScene>("res://scenes/Tenants/Posh.tscn")
         );
     }
 
@@ -230,7 +233,8 @@ public class GameManager : Node
                         { GD.Load<PackedScene>("res://scenes/ToRent/0_ToRent.tscn"), false },
                         { GD.Load<PackedScene>("res://scenes/Tenants/PoshIntro.tscn"), false },
                     },
-                    levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
+                    levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn"),
+                    tenant: GD.Load<PackedScene>("res://scenes/Tenants/Posh.tscn")
                 );
                 break;
             case 1:
@@ -241,7 +245,8 @@ public class GameManager : Node
                         { GD.Load<PackedScene>("res://scenes/ToRent/1_ToRent.tscn"), false },
                         { GD.Load<PackedScene>("res://scenes/Tenants/PainterIntro.tscn"), false },
                     },
-                    levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
+                    levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn"),
+                    tenant: GD.Load<PackedScene>("res://scenes/Tenants/Posh.tscn")
                 );
                 break;
             case 2:
@@ -255,7 +260,8 @@ public class GameManager : Node
                             false
                         },
                     },
-                    levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
+                    levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn"),
+                    tenant: GD.Load<PackedScene>("res://scenes/Tenants/Posh.tscn")
                 );
                 break;
             case 3:
@@ -266,7 +272,8 @@ public class GameManager : Node
                         { GD.Load<PackedScene>("res://scenes/ToRent/3_ToRent.tscn"), false },
                         { GD.Load<PackedScene>("res://scenes/Tenants/InvestorIntro.tscn"), false },
                     },
-                    levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn")
+                    levelScene: GD.Load<PackedScene>("res://scenes/Main.tscn"),
+                    tenant: GD.Load<PackedScene>("res://scenes/Tenants/Posh.tscn")
                 );
                 break;
             case 4:
@@ -280,7 +287,8 @@ public class GameManager : Node
                             false
                         },
                     },
-                    GD.Load<PackedScene>("res://scenes/Main.tscn")
+                    GD.Load<PackedScene>("res://scenes/Main.tscn"),
+                    tenant: GD.Load<PackedScene>("res://scenes/Tenants/Posh.tscn")
                 );
                 break;
             case 5:
