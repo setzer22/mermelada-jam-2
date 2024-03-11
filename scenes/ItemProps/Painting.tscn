@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://scenes/ItemProp.tscn" type="PackedScene" id=1]
 [ext_resource path="res://shaders/ItemProp.gdshader" type="Shader" id=2]
+[ext_resource path="res://scenes/ItemProps/Switchable.cs" type="Script" id=3]
+[ext_resource path="res://scenes/ItemProps/PaintingScript.gd" type="Script" id=4]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
@@ -19,12 +21,21 @@ radius = 13.0384
 HumanReadableName = "el cuadro"
 
 [node name="Shade" parent="." index="0"]
-position = Vector2( 0, -39.3865 )
+position = Vector2( 0, 20.6135 )
 
 [node name="Base" parent="." index="1"]
 material = SubResource( 1 )
-position = Vector2( 0, -39.3865 )
+position = Vector2( 0, 20.6135 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Collisions" index="0"]
 position = Vector2( 2, -27 )
 shape = SubResource( 2 )
+
+[node name="PaintingScript" type="Node" parent="." index="3"]
+script = ExtResource( 4 )
+
+[node name="Switchable" type="Node" parent="." index="4"]
+script = ExtResource( 3 )
+Key = "lamp"
+
+[connection signal="StateChanged" from="Switchable" to="PaintingScript" method="_on_Switchable_StateChanged"]
