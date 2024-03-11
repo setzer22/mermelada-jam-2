@@ -17,6 +17,7 @@ margin_left = -146.0
 margin_top = -259.0
 margin_right = 136.0
 margin_bottom = 91.0
+NumBadRatings = 3
 
 [node name="EvictedLabel" parent="." index="4"]
 text = ""
