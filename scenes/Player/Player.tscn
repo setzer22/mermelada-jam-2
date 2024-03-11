@@ -90,7 +90,7 @@ animations = [ {
 radius = 39.0306
 
 [sub_resource type="CircleShape2D" id=20]
-radius = 229.558
+radius = 391.0
 
 [sub_resource type="DynamicFont" id=21]
 size = 20
@@ -105,7 +105,7 @@ script = ExtResource( 2 )
 position = Vector2( -2, -60 )
 scale = Vector2( 3, 3 )
 frames = SubResource( 8 )
-frame = 4
+frame = 1
 playing = true
 
 [node name="Particles2D" type="Particles2D" parent="Sprite/Base"]
