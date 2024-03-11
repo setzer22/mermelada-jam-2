@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=2]
 
-[ext_resource path="res://assets/wardrobe_base.png" type="Texture" id=1]
-[ext_resource path="res://assets/wardrobe_shade.png" type="Texture" id=2]
-[ext_resource path="res://scenes/ItemProp.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/ItemProp.tscn" type="PackedScene" id=1]
+[ext_resource path="res://assets/drawer_base.png" type="Texture" id=2]
+[ext_resource path="res://assets/drawer_shade.png" type="Texture" id=3]
 [ext_resource path="res://shaders/ItemProp.gdshader" type="Shader" id=4]
 [ext_resource path="res://scenes/ItemProps/Surface.cs" type="Script" id=5]
 
@@ -15,24 +15,25 @@ shader_param/pattern = 2
 shader_param/inside = false
 shader_param/add_margins = true
 
-[node name="Wardrobe" instance=ExtResource( 3 )]
-HumanReadableName = "el armario"
+[node name="Drawer" instance=ExtResource( 1 )]
+HumanReadableName = "la cajonera"
 
 [node name="Shade" parent="." index="0"]
-position = Vector2( 0, -188.414 )
-texture = ExtResource( 2 )
+position = Vector2( 0, -121.178 )
+texture = ExtResource( 3 )
 
 [node name="Base" parent="." index="1"]
 material = SubResource( 1 )
-position = Vector2( 0, -188.414 )
-texture = ExtResource( 1 )
+position = Vector2( 0, -121.178 )
+texture = ExtResource( 2 )
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Collisions" index="0"]
-polygon = PoolVector2Array( -89, -9, -135, 20, 80, 19, 125, -9 )
+position = Vector2( -1, -123 )
+polygon = PoolVector2Array( -127, 137, -77, 110, 131, 108, 79, 138 )
 
 [node name="Surface" type="Node" parent="." index="3"]
 script = ExtResource( 5 )
-Key = "wardrobe"
+Key = "drawer"
 
 [node name="PlaceItemPos" type="Position2D" parent="." index="4"]
-position = Vector2( -48, -387 )
+position = Vector2( 3, -131 )
