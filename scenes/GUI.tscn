@@ -44,6 +44,7 @@ blend_mode = 1
 [sub_resource type="DynamicFont" id=4]
 size = 15
 extra_spacing_bottom = 5
+extra_spacing_space = 4
 font_data = ExtResource( 15 )
 
 [sub_resource type="Animation" id=5]

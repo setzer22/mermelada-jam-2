@@ -48,8 +48,8 @@ position = Vector2( -1650, -294 )
 [node name="ParedInvisible1" parent="YSort" index="8" instance=ExtResource( 10 )]
 position = Vector2( 74, -286 )
 
+[node name="Plant" parent="YSort" index="9" instance=ExtResource( 8 )]
+position = Vector2( 34, 192 )
+
 [node name="GUI" parent="Camera2D" index="0"]
 SceneOrder = 1
-
-[node name="Plant" parent="." index="4" instance=ExtResource( 8 )]
-position = Vector2( 34, 192 )
