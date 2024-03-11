@@ -68,6 +68,7 @@ public class Grabbable : Node
 
         // While grabbed, the parent collider is disabled
         DisableCollisions();
+        SoundManager.Singleton.PlayOneShot_typed(SFXSoundType.GrabBig);
     }
 
     public void Drop(Surface surface)

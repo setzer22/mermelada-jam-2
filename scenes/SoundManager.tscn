@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=13 format=2]
 
 [ext_resource path="res://resources/audio/ambient/587749__derplayer__ambiente_night_wildlife.ogg" type="AudioStream" id=1]
 [ext_resource path="res://resources/audio/ambient/516890__jaimelopes__suburban-morning-ambience-atmosphere.ogg" type="AudioStream" id=2]
@@ -7,6 +7,11 @@
 [ext_resource path="res://resources/audio/ambient/421819__klankbeeld__apartment-building-outdoors-summer-nl-170825_1217.ogg" type="AudioStream" id=5]
 [ext_resource path="res://resources/audio/sfx/button-hover.wav" type="AudioStream" id=6]
 [ext_resource path="res://resources/audio/sfx/button-select.wav" type="AudioStream" id=7]
+[ext_resource path="res://resources/audio/sfx/220653__marionagm90__scream.wav" type="AudioStream" id=8]
+[ext_resource path="res://resources/audio/sfx/object-big-slide.wav" type="AudioStream" id=9]
+[ext_resource path="res://resources/audio/sfx/432350__ericlichtenberg__liquid-pouring-no-ice.wav" type="AudioStream" id=10]
+[ext_resource path="res://resources/audio/sfx/object-big-drop.wav" type="AudioStream" id=11]
+[ext_resource path="res://resources/audio/sfx/tv-on.wav" type="AudioStream" id=12]
 
 [node name="SoundManager" type="Node"]
 script = ExtResource( 3 )
@@ -33,3 +38,18 @@ volume_db = -3.0
 [node name="SFXSelect" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 7 )
 volume_db = -10.0
+
+[node name="SFXScream" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 8 )
+
+[node name="SFXGrabBig" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 9 )
+
+[node name="SFXDropBig" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 11 )
+
+[node name="SFXSwitch" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 12 )
+
+[node name="SFXPoorLiquid" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 10 )

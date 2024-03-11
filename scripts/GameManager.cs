@@ -75,6 +75,7 @@ public class GameManager : Node
 
         int annoyance = LevelLogic.GetAnnoyanceLevel(levelIndex, item, surface);
         HandlePerformedActionLogic(sentence, annoyance);
+        SoundManager.Singleton.PlayOneShot_typed(SFXSoundType.DropBig);
     }
 
     /// <summary>
@@ -84,6 +85,7 @@ public class GameManager : Node
     public void SwitchedItemAction(Switchable switched, Grabbable grabbed)
     {
         var sentence = "";
+        SFXSoundType sound = SFXSoundType.Switch;
 
         // Drop beer on top of the plant
         if (switched.Key == "plant" && grabbed?.Key == "beer")
@@ -94,6 +96,7 @@ public class GameManager : Node
             grabbed.GetNode("BeerScript").Call("empty_bottle");
 
             sentence = "Regué la planta con cerveza";
+            sound = SFXSoundType.PoorLiquid;
         }
 
         // More special actions here...
@@ -107,6 +110,8 @@ public class GameManager : Node
 
         int annoyance = LevelLogic.GetAnnoyanceLevel(levelIndex, grabbed, switched);
         HandlePerformedActionLogic(sentence, annoyance);
+
+        SoundManager.Singleton.PlayOneShot_typed(sound);
     }
 
     public void HandlePerformedActionLogic(string sentence, int annoyance)

@@ -14,6 +14,11 @@ public class SoundManager : Node
     // SFX nodes
     AudioStreamPlayer Hover => _hover ??= GetNode<AudioStreamPlayer>("SFXHover"); AudioStreamPlayer _hover;
     AudioStreamPlayer Select => _select ??= GetNode<AudioStreamPlayer>("SFXSelect"); AudioStreamPlayer _select;
+    AudioStreamPlayer Scream => _scream ??= GetNode<AudioStreamPlayer>("SFXScream"); AudioStreamPlayer _scream;
+    AudioStreamPlayer GrabBig => _grabBig ??= GetNode<AudioStreamPlayer>("SFXGrabBig"); AudioStreamPlayer _grabBig;
+    AudioStreamPlayer DropBig => _dropBig ??= GetNode<AudioStreamPlayer>("SFXDropBig"); AudioStreamPlayer _dropBig;
+    AudioStreamPlayer Switch => _switch ??= GetNode<AudioStreamPlayer>("SFXSwitch"); AudioStreamPlayer _switch;
+    AudioStreamPlayer PoorLiquid => _poorLiquid ??= GetNode<AudioStreamPlayer>("SFXPoorLiquid"); AudioStreamPlayer _poorLiquid;
 
     public override void _Ready()
     {
@@ -48,15 +53,25 @@ public class SoundManager : Node
             ? value
             : SFXSoundType.Invalid;
 
-        if (type == SFXSoundType.Invalid)
+        PlayOneShot_typed(type);
+    }
+
+    public void PlayOneShot_typed(SFXSoundType sound)
+    {
+        if (sound == SFXSoundType.Invalid)
         {
             GD.Print($"missing or invalid SFX: {sound}");
         }
 
-        AudioStreamPlayer sfx = type switch
+        AudioStreamPlayer sfx = sound switch
         {
             SFXSoundType.Hover => Hover,
             SFXSoundType.Select => Select,
+            SFXSoundType.Scream => Scream,
+            SFXSoundType.GrabBig => GrabBig,
+            SFXSoundType.DropBig => DropBig,
+            SFXSoundType.Switch => Switch,
+            SFXSoundType.PoorLiquid => PoorLiquid,
             _ => Hover,
         };
 
@@ -79,4 +94,8 @@ public enum SFXSoundType
     Hover,
     Select,
     Scream,
+    GrabBig,
+    DropBig,
+    Switch,
+    PoorLiquid,
 }
