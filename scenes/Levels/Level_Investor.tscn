@@ -2,9 +2,9 @@
 
 [ext_resource path="res://scenes/GameLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Tenants/Investor.tscn" type="PackedScene" id=2]
-[ext_resource path="res://scenes/ItemProps/TV.tscn" type="PackedScene" id=3]
+[ext_resource path="res://scenes/ItemProps/Plug.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/ItemProps/Table.tscn" type="PackedScene" id=4]
-[ext_resource path="res://scenes/ItemProps/Blanket.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/ItemProps/fork.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" instance=ExtResource( 1 )]
 
@@ -14,11 +14,11 @@ position = Vector2( -680, 205 )
 [node name="Table" parent="YSort" index="2" instance=ExtResource( 4 )]
 position = Vector2( -293, 166 )
 
-[node name="Blanket" parent="YSort/Table" index="5" instance=ExtResource( 5 )]
-position = Vector2( 61, -133 )
+[node name="tenedor" parent="YSort/Table" index="5" instance=ExtResource( 5 )]
+position = Vector2( 97, -141 )
 
-[node name="TV" parent="YSort" index="3" instance=ExtResource( 3 )]
-position = Vector2( -757, 144 )
+[node name="Plug" parent="YSort" index="3" instance=ExtResource( 3 )]
+position = Vector2( -761, 41 )
 
 [node name="GUI" parent="Camera2D" index="0"]
 SceneOrder = 4

@@ -60,6 +60,9 @@ public static class LevelLogic
         if (item?.Key == "blanket" && switchable?.Key == "tv") {
             annoyance = 3;
         }
+        if (item?.Key == "fork" && switchable?.Key == "plug") {
+            annoyance = 3;
+        }
 
         return annoyance;
     }

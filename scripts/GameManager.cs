@@ -97,6 +97,12 @@ public class GameManager : Node
             sentence = "Regué la planta con cerveza";
             sound = SFXSoundType.PoorLiquid;
         }
+        if (switched.Key == "plug" && grabbed?.Key == "fork") {
+            sentence = "Metí un tenedor en el enchufe";
+        }
+        if (switched.Key == "tv" && grabbed?.Key == "blanket") {
+            sentence = "Cubrí la tele con una manta";
+        }
 
         // More special actions here...
 
