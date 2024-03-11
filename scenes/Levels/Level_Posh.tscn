@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://scenes/GameLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Tenants/Posh.tscn" type="PackedScene" id=2]
@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/ItemProps/Pillow.tscn" type="PackedScene" id=5]
 [ext_resource path="res://scenes/ItemProps/Lamp.tscn" type="PackedScene" id=6]
 [ext_resource path="res://scenes/ItemProps/Table.tscn" type="PackedScene" id=7]
+[ext_resource path="res://scenes/ItemProps/Beer.tscn" type="PackedScene" id=8]
 
 [node name="Node2D" instance=ExtResource( 1 )]
 
@@ -15,6 +16,9 @@ position = Vector2( 509, 164 )
 
 [node name="Table" parent="YSort" index="2" instance=ExtResource( 7 )]
 position = Vector2( -218, 182 )
+
+[node name="Beer" parent="YSort/Table" index="5" instance=ExtResource( 8 )]
+position = Vector2( 97, -140 )
 
 [node name="Wardrobe" parent="YSort" index="3" instance=ExtResource( 4 )]
 position = Vector2( 793, 144 )
