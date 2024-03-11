@@ -151,6 +151,28 @@ public class GameManager : Node
         }
     }
 
+
+    int nothingIndex = 0;
+    public void ReportNewDay()
+    {
+        int annoyance = LevelLogic.GetDayPassedAnnoyanceLevel(levelIndex);
+
+        if (annoyance > 0)
+        {
+            string sentence = nothingIndex switch
+            {
+                0 => "No hice nada",
+                1 => "Seguí sin hacer nada",
+                2 => "Esperé, y esperé...",
+                3 => "Ay por favor, cuanta paciencia...",
+                _ => $"Hice que llorara {nothingIndex + 1} veces",
+            };
+            nothingIndex++;
+
+            HandlePerformedActionLogic(sentence, annoyance);
+        }
+    }
+
     public async void WaitAndGoToNextLevel()
     {
         await ToSignal(GetTree().CreateTimer(2), "timeout");

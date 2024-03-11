@@ -41,15 +41,20 @@ volume_db = -10.0
 
 [node name="SFXScream" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 8 )
+volume_db = -10.0
 
 [node name="SFXGrabBig" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 9 )
+volume_db = -10.0
 
 [node name="SFXDropBig" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 11 )
+volume_db = -5.0
 
 [node name="SFXSwitch" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 12 )
+volume_db = -5.0
 
 [node name="SFXPoorLiquid" type="AudioStreamPlayer" parent="."]
 stream = ExtResource( 10 )
+volume_db = -5.0
