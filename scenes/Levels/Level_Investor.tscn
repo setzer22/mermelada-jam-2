@@ -7,6 +7,7 @@
 [ext_resource path="res://scenes/ItemProps/fork.tscn" type="PackedScene" id=5]
 
 [node name="Node2D" instance=ExtResource( 1 )]
+position = Vector2( -34, 15 )
 
 [node name="Investor" parent="YSort" index="1" instance=ExtResource( 2 )]
 position = Vector2( -680, 205 )
@@ -19,6 +20,9 @@ position = Vector2( 97, -141 )
 
 [node name="Plug" parent="YSort" index="3" instance=ExtResource( 3 )]
 position = Vector2( -761, 41 )
+
+[node name="Plug2" parent="YSort" index="4" instance=ExtResource( 3 )]
+position = Vector2( -821, 40 )
 
 [node name="GUI" parent="Camera2D" index="0"]
 SceneOrder = 4

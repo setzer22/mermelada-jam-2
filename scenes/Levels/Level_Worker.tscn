@@ -1,24 +1,33 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://scenes/GameLevel.tscn" type="PackedScene" id=1]
 [ext_resource path="res://scenes/Tenants/BlueCollar.tscn" type="PackedScene" id=2]
 [ext_resource path="res://scenes/ItemProps/Couch.tscn" type="PackedScene" id=3]
 [ext_resource path="res://scenes/ItemProps/TV.tscn" type="PackedScene" id=4]
 [ext_resource path="res://scenes/ItemProps/Blanket.tscn" type="PackedScene" id=5]
+[ext_resource path="res://scenes/ItemProps/Plug.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scenes/ItemProps/Lamp.tscn" type="PackedScene" id=7]
 
 [node name="Node2D" instance=ExtResource( 1 )]
+position = Vector2( 1013, 297 )
 
 [node name="TV" parent="YSort" index="0" instance=ExtResource( 4 )]
 position = Vector2( -240, 143 )
 
-[node name="Couch" parent="YSort" index="1" instance=ExtResource( 3 )]
+[node name="Plug" parent="YSort" index="1" instance=ExtResource( 6 )]
+position = Vector2( -101, 92 )
+
+[node name="Couch" parent="YSort" index="2" instance=ExtResource( 3 )]
 position = Vector2( 132, 160 )
 
 [node name="Blanket" parent="YSort/Couch" index="5" instance=ExtResource( 5 )]
 position = Vector2( 69, -63 )
 
+[node name="BlueCollar" parent="YSort" index="3" instance=ExtResource( 2 )]
+position = Vector2( -664, 179 )
+
 [node name="GUI" parent="Camera2D" index="0"]
 SceneOrder = 3
 
-[node name="BlueCollar" parent="." index="3" instance=ExtResource( 2 )]
-position = Vector2( -664, 179 )
+[node name="Lamp" parent="." index="4" instance=ExtResource( 7 )]
+position = Vector2( -788, 176 )
