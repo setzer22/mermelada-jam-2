@@ -17,6 +17,20 @@
 [ext_resource path="res://resources/fonts/Mojang-Regular.ttf" type="DynamicFontData" id=15]
 [ext_resource path="res://resources/sprites/UI/tenants_UI/tenant_cube.png" type="Texture" id=16]
 
+[sub_resource type="Shader" id=12]
+code = "shader_type canvas_item;
+
+uniform vec4 color : hint_color;
+
+void fragment() {
+    // Modificar el color del fragmento utilizando el color uniforme
+    COLOR.rgb *= color.rgb;
+}"
+
+[sub_resource type="ShaderMaterial" id=9]
+shader = SubResource( 12 )
+shader_param/color = null
+
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 1, 0.764706, 0.588235, 0 )
 
@@ -51,20 +65,6 @@ bg_color = Color( 0.647059, 0.470588, 0.333333, 1 )
 
 [sub_resource type="StyleBoxFlat" id=7]
 bg_color = Color( 0.831373, 0.776471, 0.572549, 1 )
-
-[sub_resource type="Shader" id=12]
-code = "shader_type canvas_item;
-
-uniform vec4 color : hint_color;
-
-void fragment() {
-    // Modificar el color del fragmento utilizando el color uniforme
-    COLOR.rgb *= color.rgb;
-}"
-
-[sub_resource type="ShaderMaterial" id=9]
-shader = SubResource( 12 )
-shader_param/color = null
 
 [sub_resource type="Animation" id=13]
 length = 0.001
@@ -120,19 +120,32 @@ tracks/3/keys = {
 [sub_resource type="Animation" id=14]
 resource_name = "goDmg"
 tracks/0/type = "value"
-tracks/0/path = NodePath(".:rect_scale")
+tracks/0/path = NodePath("Panel/TenantCubeUI:rect_scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/imported = false
 tracks/0/enabled = true
 tracks/0/keys = {
-"times": PoolRealArray( 0, 0.2, 0.4, 0.6, 0.8 ),
-"transitions": PoolRealArray( 1, 1, 1, 1, 1 ),
+"times": PoolRealArray( 0, 0.1, 0.2, 0.3 ),
+"transitions": PoolRealArray( 1, 1, 1, 1 ),
 "update": 0,
-"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ) ]
+"values": [ Vector2( 1, 1 ), Vector2( 1.1, 1.1 ), Vector2( 1, 1 ), Vector2( 1.1, 1.1 ) ]
+}
+tracks/1/type = "value"
+tracks/1/path = NodePath("Panel/TenantCubeUI:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/keys = {
+"times": PoolRealArray( 0, 0.3, 0.7 ),
+"transitions": PoolRealArray( 1, 0.267943, 1 ),
+"update": 0,
+"values": [ Color( 1, 1, 1, 1 ), Color( 1, 0.356863, 0.356863, 1 ), Color( 1, 1, 1, 1 ) ]
 }
 
 [node name="GUI" type="Control"]
+material = SubResource( 9 )
 anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 8 )
@@ -310,20 +323,22 @@ valign = 1
 autowrap = true
 
 [node name="TenantCubeUI" type="TextureRect" parent="Panel"]
-margin_left = 751.0
-margin_top = 8.0
-margin_right = 853.0
-margin_bottom = 107.0
+margin_left = 758.486
+margin_top = 16.05
+margin_right = 858.486
+margin_bottom = 116.05
+rect_scale = Vector2( 1.1, 1.1 )
+rect_pivot_offset = Vector2( 50, 50 )
 texture = ExtResource( 16 )
 expand = true
 
 [node name="TenantTexture" type="TextureRect" parent="Panel/TenantCubeUI"]
 anchor_right = 1.0
 anchor_bottom = 1.0
-margin_left = 1.0
-margin_top = 11.0
-margin_right = -53.0
-margin_bottom = -40.0
+margin_left = 0.909058
+margin_top = 11.8182
+margin_right = -51.0909
+margin_bottom = -39.1818
 rect_scale = Vector2( 2, 2 )
 texture = ExtResource( 14 )
 
@@ -338,7 +353,7 @@ custom_styles/bg = SubResource( 7 )
 value = 50.0
 
 [node name="CubeAnimation" type="AnimationPlayer" parent="Panel/TenantCubeUI"]
-root_node = NodePath("")
+root_node = NodePath("../../..")
 anims/RESET = SubResource( 13 )
 anims/goDmg = SubResource( 14 )
 
