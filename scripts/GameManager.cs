@@ -125,7 +125,8 @@ public class GameManager : Node
             EmitSignal(nameof(InkSpent), (1f / (float)maxInk) * 100f);
             EmitSignal(nameof(TenantDamaged), (annoyance / (float)maxAnnoyance) * 100f);
             EmitSignal(nameof(NewJournalAction), sentence);
-            EmitSignal(nameof(UpdateRatings), annoyance);
+            // Commented for don't override rattings on change objects
+            //EmitSignal(nameof(UpdateRatings), annoyance);
 
             GD.PrintErr(accumulatedAnnoyanceLevel);
             if (performedActions.Count > maxAnnoyance)
