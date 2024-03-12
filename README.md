@@ -1,6 +1,6 @@
 Our submission for the [*Mermelada Jam 2*](https://itch.io/jam/mermelada-jam-2)
 
-<iframe frameborder="0" src="https://itch.io/embed-upload/9912733?color=437d66" allowfullscreen="" width="1024" height="620"><a href="https://kunsto.itch.io/la-ultima-morada">Play La Última Morada on itch.io</a></iframe>
+[Play it here!](https://itch.io/embed-upload/9912733?color=437d66)
 
 Developed in Godot 3.5, using C# and GDScript.
 
