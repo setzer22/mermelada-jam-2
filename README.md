@@ -25,3 +25,9 @@ While most of the game assets were produced by our team, some external assets we
 - Orange Juice 2.0 (font): https://www.dafont.com/es/orange-juice.font
 - Sr.Toasty & Narik (asset packs): https://srtoasty.itch.io/ui-assets-pack-2
 - Pixel art animated star: https://soulofkiran.itch.io/pixel-art-animated-star
+
+**License**
+Other than the assets listed above, the following licenses apply:
+
+- All code is distributed under the terms of the MIT license. See MIT-LICENSE.txt
+- All non-code (asset) files are distributed under [CC BY-NC-SA 4.0 Deed](https://creativecommons.org/licenses/by-nc-sa/4.0/). See CC-BY-NC-SA.txt
