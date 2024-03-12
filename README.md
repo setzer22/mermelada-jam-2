@@ -25,6 +25,13 @@ While most of the game assets were produced by our team, some external assets we
 - Orange Juice 2.0 (font): https://www.dafont.com/es/orange-juice.font
 - Sr.Toasty & Narik (asset packs): https://srtoasty.itch.io/ui-assets-pack-2
 - Pixel art animated star: https://soulofkiran.itch.io/pixel-art-animated-star
+- Music: Kevin MacLeod1821 S Ridge RdGreen Bay WI, 54304USA, CC BY 3.0 US <https://creativecommons.org/licenses/by/3.0/us/deed.en>, via Wikimedia Commons
+- SFX: sound 220653, marionagm90, CC BY 3.0 <http://creativecommons.org/licenses/by/3.0/> via Freesound
+- SFX: sound 421819, klankbeeld, CC BY 4.0 <https://creativecommons.org/licenses/by/4.0/> via Freesound
+- SFX: sound 432350, ericlichtenberg, CC0 <http://creativecommons.org/publicdomain/zero/1.0/> via Freesound
+- SFX: sound 516890, JaimeLopes, CC BY 4.0 <https://creativecommons.org/licenses/by/4.0/> via Freesound
+- SFX: sound 587749, derplayer, CC0 <http://creativecommons.org/publicdomain/zero/1.0/> via Freesound
+- SFX: sound 725337, ichitaraaa, CC0 <http://creativecommons.org/publicdomain/zero/1.0/> via Freesound
 
 **License**
 
