@@ -29,5 +29,5 @@ While most of the game assets were produced by our team, some external assets we
 **License**
 Other than the assets listed above, the following licenses apply:
 
-- All code is distributed under the terms of the MIT license. See MIT-LICENSE.txt
 - All non-code (asset) files are distributed under [CC BY-NC-SA 4.0 Deed](https://creativecommons.org/licenses/by-nc-sa/4.0/). See CC-BY-NC-SA.txt
+- All code is distributed under the terms of the MIT license. See MIT-LICENSE.txt
