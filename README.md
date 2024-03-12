@@ -27,6 +27,7 @@ While most of the game assets were produced by our team, some external assets we
 - Pixel art animated star: https://soulofkiran.itch.io/pixel-art-animated-star
 
 **License**
+
 Other than the assets listed above, the following licenses apply:
 
 - All non-code (asset) files are distributed under [CC BY-NC-SA 4.0 Deed](https://creativecommons.org/licenses/by-nc-sa/4.0/). See CC-BY-NC-SA.txt
