@@ -1,6 +1,10 @@
+# *La Última Morada* (Forever Home)
+
 Our submission for the [*Mermelada Jam 2*](https://itch.io/jam/mermelada-jam-2)
 
 [**Play it here!**](https://itch.io/embed-upload/9912733?color=437d66)
+
+*NOTE: The game is currently in spanish, some jokes may be difficult for non-native speakers. A localized English version is in the works!*
 
 ![image](https://github.com/setzer22/mermelada-jam-2/assets/7241990/812f8d1d-fda7-45df-ad87-af96ee2cbe29)
 
