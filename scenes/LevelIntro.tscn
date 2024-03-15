@@ -3,7 +3,7 @@
 [ext_resource path="res://assets/fonts/FontBigRed.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/fonts/FontTitle.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/fonts/FontSubtitle.tres" type="DynamicFont" id=3]
-[ext_resource path="res://scenes/LevelIntro.cs" type="Script" id=4]
+[ext_resource path="res://scripts/Levels/LevelIntro.cs" type="Script" id=4]
 
 [node name="LevelIntro" type="Control"]
 anchor_right = 1.0

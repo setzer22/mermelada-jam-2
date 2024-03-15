@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/sprites/wallet_shade.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/wallet_base.png" type="Texture" id=3]
 [ext_resource path="res://shaders/ItemProp.gdshader" type="Shader" id=4]
-[ext_resource path="res://scenes/ItemProps/Grabbable.cs" type="Script" id=5]
+[ext_resource path="res://scripts/InteractiveProps/Grabbable.cs" type="Script" id=5]
 
 [sub_resource type="ShaderMaterial" id=2]
 resource_local_to_scene = true

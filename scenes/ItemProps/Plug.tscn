@@ -4,8 +4,8 @@
 [ext_resource path="res://assets/sprites/plug_base.png" type="Texture" id=2]
 [ext_resource path="res://assets/sprites/plug_fork.png" type="Texture" id=3]
 [ext_resource path="res://shaders/ItemProp.gdshader" type="Shader" id=4]
-[ext_resource path="res://scenes/ItemProps/Switchable.cs" type="Script" id=5]
-[ext_resource path="res://scenes/ItemProps/PlugScript.gd" type="Script" id=6]
+[ext_resource path="res://scripts/InteractiveProps/Switchable.cs" type="Script" id=5]
+[ext_resource path="res://scripts/InteractiveProps/PlugScript.gd" type="Script" id=6]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true

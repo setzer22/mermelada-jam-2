@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/sprites/table.png" type="Texture" id=2]
 [ext_resource path="res://shaders/ItemProp.gdshader" type="Shader" id=3]
 [ext_resource path="res://assets/sprites/table_shade.png" type="Texture" id=4]
-[ext_resource path="res://scenes/ItemProps/Surface.cs" type="Script" id=5]
+[ext_resource path="res://scripts/InteractiveProps/Surface.cs" type="Script" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true

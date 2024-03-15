@@ -3,8 +3,8 @@
 [ext_resource path="res://assets/sprites/beer_base.png" type="Texture" id=1]
 [ext_resource path="res://scenes/ItemProp.tscn" type="PackedScene" id=2]
 [ext_resource path="res://shaders/ItemProp.gdshader" type="Shader" id=3]
-[ext_resource path="res://scenes/ItemProps/Grabbable.cs" type="Script" id=4]
-[ext_resource path="res://scenes/ItemProps/BeerScript.gd" type="Script" id=5]
+[ext_resource path="res://scripts/InteractiveProps/Grabbable.cs" type="Script" id=4]
+[ext_resource path="res://scripts/InteractiveProps/BeerScript.gd" type="Script" id=5]
 
 [sub_resource type="ShaderMaterial" id=1]
 resource_local_to_scene = true
