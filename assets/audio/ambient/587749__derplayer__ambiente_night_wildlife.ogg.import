@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/587749__derplayer__ambiente_night_wildlife.ogg-e160a02a26b46b2f000f3694a2c15ff1.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/ambient/587749__derplayer__ambiente_night_wildlife.ogg"
+dest_files=[ "res://.import/587749__derplayer__ambiente_night_wildlife.ogg-e160a02a26b46b2f000f3694a2c15ff1.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

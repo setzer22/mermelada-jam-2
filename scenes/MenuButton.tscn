@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=2]
 
-[ext_resource path="res://resources/fonts/orange juice 2.0.ttf" type="DynamicFontData" id=1]
+[ext_resource path="res://assets/fonts/orange juice 2.0.ttf" type="DynamicFontData" id=1]
 [ext_resource path="res://scripts/UI/MenuButton.gd" type="Script" id=3]
-[ext_resource path="res://assets/ghost_menu.png" type="Texture" id=4]
+[ext_resource path="res://assets/sprites/ghost_menu.png" type="Texture" id=4]
 
 [sub_resource type="DynamicFont" id=1]
 size = 50

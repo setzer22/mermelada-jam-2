@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/Ghost_Dance_(MacLeod,_Kevin).mp3-328a80b29f8f898d9f1e042fd69c0f51.mp3str"
+
+[deps]
+
+source_file="res://assets/audio/music/Ghost_Dance_(MacLeod,_Kevin).mp3"
+dest_files=[ "res://.import/Ghost_Dance_(MacLeod,_Kevin).mp3-328a80b29f8f898d9f1e042fd69c0f51.mp3str" ]
+
+[params]
+
+loop=true
+loop_offset=0

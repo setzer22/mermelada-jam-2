@@ -1,0 +1,23 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/fork-in-socket.wav-0c3e7e0c060178ba1260a7dcb447cfde.sample"
+
+[deps]
+
+source_file="res://assets/audio/sfx/fork-in-socket.wav"
+dest_files=[ "res://.import/fork-in-socket.wav-0c3e7e0c060178ba1260a7dcb447cfde.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

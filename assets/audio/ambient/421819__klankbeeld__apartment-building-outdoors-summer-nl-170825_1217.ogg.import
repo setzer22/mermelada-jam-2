@@ -1,0 +1,15 @@
+[remap]
+
+importer="ogg_vorbis"
+type="AudioStreamOGGVorbis"
+path="res://.import/421819__klankbeeld__apartment-building-outdoors-summer-nl-170825_1217.ogg-99f615ca319d111f8fb4876f4bc3396b.oggstr"
+
+[deps]
+
+source_file="res://assets/audio/ambient/421819__klankbeeld__apartment-building-outdoors-summer-nl-170825_1217.ogg"
+dest_files=[ "res://.import/421819__klankbeeld__apartment-building-outdoors-summer-nl-170825_1217.ogg-99f615ca319d111f8fb4876f4bc3396b.oggstr" ]
+
+[params]
+
+loop=true
+loop_offset=0

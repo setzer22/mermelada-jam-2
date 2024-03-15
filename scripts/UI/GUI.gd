@@ -26,13 +26,13 @@ var startsButton
 export var SceneOrder : int
 
 
-var starEmptySprite = preload("res://resources/sprites/UI/Star_Empty2.png")
+var starEmptySprite = preload("res://assets/sprites/UI/Star_Empty2.png")
 
-var poshUIportrait = preload("res://resources/sprites/UI/tenants_UI/cube_posh.png")
-var cube_artistUIportrait = preload("res://resources/sprites/UI/tenants_UI/cube_artist.png")
-var cube_bluecollarUIportrait = preload("res://resources/sprites/UI/tenants_UI/cube_bluecollar.png")
-var investorUIportrait = preload("res://resources/sprites/UI/tenants_UI/cube_investor.png")
-var cube_ghosthunterUIportrait = preload("res://resources/sprites/UI/tenants_UI/cube_ghosthunter.png")
+var poshUIportrait = preload("res://assets/sprites/UI/tenants_UI/cube_posh.png")
+var cube_artistUIportrait = preload("res://assets/sprites/UI/tenants_UI/cube_artist.png")
+var cube_bluecollarUIportrait = preload("res://assets/sprites/UI/tenants_UI/cube_bluecollar.png")
+var investorUIportrait = preload("res://assets/sprites/UI/tenants_UI/cube_investor.png")
+var cube_ghosthunterUIportrait = preload("res://assets/sprites/UI/tenants_UI/cube_ghosthunter.png")
 
 func _ready():
 	$Panel/ClockProgress.set_value(0.0)
